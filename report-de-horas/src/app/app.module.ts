@@ -1,8 +1,10 @@
+import { AppRoutingModule } from './app.routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { RouterModule } from '@angular/router';
 
 import { TestesModule } from './testes/testes.module';
 import { EstruturaModule } from './estrutura/estrutura.module';
@@ -17,7 +19,9 @@ import { EstruturaModule } from './estrutura/estrutura.module';
     ReactiveFormsModule,
     FormsModule,
     TestesModule,
-    EstruturaModule
+    EstruturaModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
