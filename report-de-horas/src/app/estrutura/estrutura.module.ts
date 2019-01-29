@@ -24,6 +24,9 @@ import { FooterComponent } from './footer/footer.component';
     MenuHeaderComponent,
     MenuLinksComponent,
     FooterComponent
+  ],
+  exports: [
+    AdminRaizComponent
   ]
 })
 export class EstruturaModule { }
