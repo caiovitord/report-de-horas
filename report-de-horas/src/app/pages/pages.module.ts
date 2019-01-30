@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ReportHorasModule } from './report-horas/report-horas.module';
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ReportHorasModule
   ],
   declarations: []
 })
-export class ReportHorasModule { }
+export class PagesModule { }
