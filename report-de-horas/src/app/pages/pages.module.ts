@@ -12,6 +12,6 @@ import { ReportHorasModule } from './report-horas/report-horas.module';
 
   ],
   declarations: []
-  
+
 })
 export class PagesModule { }
