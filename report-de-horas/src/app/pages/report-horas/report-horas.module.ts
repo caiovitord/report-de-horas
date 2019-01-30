@@ -1,3 +1,4 @@
+import { FormsTesteComponent } from './rh-form/forms-teste/forms-teste.component';
 import { TestesModule } from './../../testes/testes.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,6 +8,8 @@ import { RhPaginaComponent } from './rh-pagina/rh-pagina.component';
 import { RhFormComponent } from './rh-form/rh-form.component';
 import { BtnAddRequisitoComponent } from './btn-add-requisito/btn-add-requisito.component';
 import { FormtesteComponent } from './rh-form/formteste/formteste.component';
+import { PagesModule } from '../pages.module';
+
 
 
 
@@ -16,6 +19,6 @@ import { FormtesteComponent } from './rh-form/formteste/formteste.component';
     ReactiveFormsModule,
     TestesModule
   ],
-  declarations: [RhPaginaComponent, RhFormComponent, BtnAddRequisitoComponent, FormtesteComponent]
+  declarations: [RhPaginaComponent, RhFormComponent, BtnAddRequisitoComponent, FormtesteComponent, FormsTesteComponent]
 })
 export class ReportHorasModule { }

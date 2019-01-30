@@ -1,0 +1,30 @@
+<form class="form-horizontal" [formGroup]="formulario">
+
+    <div class="form-group">
+      <div class="col-md-4">
+         <label for="cargo" class="control-label">Dev</label>
+         <select class="form-control" formControlName="cargo">
+           <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{ cargo.nome }}</option>
+         </select>
+         <small class="form-text text-muted">
+            Selecione o cargo para o requisito.
+        </small>
+      </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-md-4">
+           <label for="area" class="control-label">Front/Back</label>
+           <select class="form-control"  formControlName="area">
+              <option *ngFor="let area of area" [ngValue]="area">{{ area.nome }}</option>
+           </select>
+           <small class="form-text text-muted">
+              Selecione a área para o requisito.
+          </small>
+        </div>
+      </div>
+
+      <app-form-debug [form]="formulario"></app-form-debug>
+      <button class="btn" (click)="setarCargo">Submit</button>
+
+</form>

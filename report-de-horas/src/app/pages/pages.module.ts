@@ -1,7 +1,9 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ReportHorasModule } from './report-horas/report-horas.module';
+
 
 @NgModule({
   imports: [
@@ -10,5 +12,6 @@ import { ReportHorasModule } from './report-horas/report-horas.module';
 
   ],
   declarations: []
+  
 })
 export class PagesModule { }
