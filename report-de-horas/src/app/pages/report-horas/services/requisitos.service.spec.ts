@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { RequisitoService } from './requisito.service';
+import { RequisitoService } from './requisitos.service';
 
 describe('RequisitoService', () => {
   beforeEach(() => {

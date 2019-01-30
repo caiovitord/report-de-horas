@@ -8,6 +8,7 @@ const END_POINT = 'assets/dados/requisitos.json';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RequisitoService {
 
   constructor(private http: Http) { }

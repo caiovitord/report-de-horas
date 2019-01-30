@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ServicosService {
+export class DesenvolvedoresService {
 
   constructor() { }
 
-  getCargos(){
+  getCargos() {
     return [
       {nome: 'Dev 1'},
       {nome: 'Dev 2'},
@@ -15,7 +15,7 @@ export class ServicosService {
     ];
   }
 
-  getArea(){
+  getArea() {
     return [
       {nome: 'Beck'},
       {nome: 'Front'}

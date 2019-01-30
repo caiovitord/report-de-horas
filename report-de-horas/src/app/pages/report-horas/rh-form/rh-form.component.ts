@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { RequisitoService } from '././../services/requisito.service';
-import { ServicosService } from './../serviços/servico.service';
+import { RequisitoService } from '../services/requisitos.service';
+import { DesenvolvedoresService } from '../services/desenvolvedores.service';
 
 @Component({
   selector: 'app-rh-form',
@@ -23,21 +23,21 @@ export class RhFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private services: ServicosService,
+    private devService: DesenvolvedoresService,
     private requisitoService: RequisitoService) { }
 
   ngOnInit() {
 
 
     this.requisitos$ = this.requisitoService.getRequisitos();
-    this.cargos = this.services.getCargos();
-    this.area = this.services.getArea();
+    this.cargos = this.devService.getCargos();
+    this.area = this.devService.getArea();
 
     this.formulario = this.formBuilder.group({
       requisito: [null, [Validators.required]],
       cargo: [null, [Validators.required]],
       area: [null, [Validators.required]],
-      horasTrabalhadas: [0, [Validators.required, Validators.min(0.1)]],
+      horasTrabalhadas: [null, [Validators.required, Validators.min(0.1)]],
       diaTrabalho: [null, [Validators.required]],
       conclusao: [null, [Validators.required, Validators.min(10), Validators.minLength(2), Validators.maxLength(3), Validators.max(100)]],
       observacao: [null, ]
