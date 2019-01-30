@@ -7,6 +7,7 @@ import { ReportHorasModule } from './report-horas/report-horas.module';
   imports: [
     CommonModule,
     ReportHorasModule
+
   ],
   declarations: []
 })
