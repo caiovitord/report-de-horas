@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { RouterModule } from '@angular/router';
 
 import { TestesModule } from './testes/testes.module';
 import { EstruturaModule } from './estrutura/estrutura.module';
+import { PagesModule } from './pages/pages.module';
 
 
 @NgModule({
@@ -18,12 +18,14 @@ import { EstruturaModule } from './estrutura/estrutura.module';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    FormsModule,
-    TestesModule,
     EstruturaModule,
     RouterModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+
+    PagesModule,
+    FormsModule,
+    TestesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
