@@ -1,11 +1,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    {{ titulo }}
-    <small>{{ descricao }}</small>
+    {{ pageHeaderService.titulo }}
+    <small>{{ pageHeaderService.descricao }}</small>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> {{ nivelSuperior }}</a></li>
-    <li class="active">{{ titulo }}</li>
+    <li><a href="#"><i class="fa fa-dashboard"></i> {{ pageHeaderService.nivelSuperior }}</a></li>
+    <li class="active">{{ pageHeaderService.titulo }}</li>
   </ol>
 </section>
+

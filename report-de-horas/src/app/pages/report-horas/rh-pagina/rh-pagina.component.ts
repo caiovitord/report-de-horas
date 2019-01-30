@@ -1,3 +1,4 @@
+import { PageHeaderService } from './../../../estrutura/container/page-header/page-header.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RhPaginaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pageHeaderService: PageHeaderService) { }
 
   ngOnInit() {
+    this.pageHeaderService.titulo = 'Report de Horas';
+    this.pageHeaderService.nivelSuperior = 'Home';
+    this.pageHeaderService.descricao = 'Insira as horas trabalhadas por requisito';
   }
 
 }

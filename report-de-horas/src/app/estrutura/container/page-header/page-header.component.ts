@@ -8,16 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHeaderComponent implements OnInit {
 
-  titulo = '';
-  descricao  = '';
-  nivelSuperior = '';
 
   constructor(private pageHeaderService: PageHeaderService) { }
 
   ngOnInit() {
-    this.titulo = this.pageHeaderService.getTitulo();
-    this.descricao = this.pageHeaderService.getDescricao();
-    this.nivelSuperior = this.pageHeaderService.getNivelSuperior();
+
 
   }
 
