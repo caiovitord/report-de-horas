@@ -23,9 +23,9 @@ export class SaveComponent implements OnInit {
   }
 
   onSubmit() {
-    const FileSaver = require('file-saver');
+    /*const FileSaver = require('file-saver');
     const blob = new Blob([this.formulario.get('inputText').value], {type: 'text/plain;charset=utf-8'});
-    FileSaver.saveAs(blob, "Seu CSV.csv");
+    FileSaver.saveAs(blob, "Seu CSV.csv");*/
 
   }
 

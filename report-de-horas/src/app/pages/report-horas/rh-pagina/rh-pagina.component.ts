@@ -19,7 +19,7 @@ export class RhPaginaComponent implements OnInit, AfterViewInit {
   @ViewChild('appContainer') appContainer;
   @ViewChild('primeiroForm') primeiroForm;
 
-  formComponents: RhFormComponent[] = [];
+  public formComponents: RhFormComponent[] = [];
 
 
   constructor(

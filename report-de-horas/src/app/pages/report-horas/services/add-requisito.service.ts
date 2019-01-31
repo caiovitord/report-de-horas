@@ -9,10 +9,14 @@ import { RhContainerComponent } from '../rh-pagina/rh-container/rh-container.com
 })
 export class AddRequisitoService {
 
+  public quantidadeDeFormularios = 1; // Sempre já tem ao menos  um form
+
+
   constructor(private factoryResolver: ComponentFactoryResolver) {
   }
 
   createAnotherForm(viewContainerRef: ViewContainerRef): any {
+    this.quantidadeDeFormularios++;
     const componentFactory = this.factoryResolver.resolveComponentFactory(RhFormComponent);
     //viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);

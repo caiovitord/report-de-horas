@@ -2,3 +2,6 @@
     border-radius: 4px;
     height: 36px;
 }
+.panel-body{
+   background : #f9f9f9;
+}

@@ -1,4 +1,3 @@
-import { CsvGeneratorService } from './../services/csv-generator.service';
 import { Component, OnInit, ViewContainerRef, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, delay } from 'rxjs/operators';
@@ -6,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { RequisitoService } from '../services/requisitos.service';
 import { DesenvolvedoresService } from '../services/desenvolvedores.service';
-
+import { AddRequisitoService } from './../services/add-requisito.service';
 
 @Component({
   selector: 'app-rh-form',
@@ -25,12 +24,12 @@ export class RhFormComponent implements OnInit {
   desenvolvedores: any;
   area: any;
 
+  formNumber: number;
+
   constructor(
     private formBuilder: FormBuilder,
     private devService: DesenvolvedoresService,
     private requisitoService: RequisitoService,
-    private viewContainerRef: ViewContainerRef,
-    private gerarCsvService: CsvGeneratorService,
     private elem: ElementRef
     ) { }
 

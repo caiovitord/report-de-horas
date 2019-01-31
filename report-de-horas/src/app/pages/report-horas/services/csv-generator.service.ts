@@ -2,10 +2,15 @@ import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { RhFormComponent } from '../rh-form/rh-form.component';
 
+declare var require: any;
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class CsvGeneratorService {
+
+
 
   constructor() { }
 
