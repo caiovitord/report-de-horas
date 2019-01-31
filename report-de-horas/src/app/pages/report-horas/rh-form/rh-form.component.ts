@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef, ElementRef } from '@angular/core';
+import { Component, OnInit, ComponentRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -24,14 +24,13 @@ export class RhFormComponent implements OnInit {
   desenvolvedores: any;
   area: any;
 
-  formNumber: number;
+  public formNumber: number;
 
   constructor(
     private formBuilder: FormBuilder,
     private devService: DesenvolvedoresService,
     private requisitoService: RequisitoService,
     private qtdFormsService: QuantidadeFormsService,
-    public containerRef: ViewContainerRef
     ) { }
 
 

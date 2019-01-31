@@ -1,4 +1,4 @@
-<div class="btn-remover-requisito">
+<div  *ngIf="rhFormComponent.formNumber > 1"  class="btn-remover-requisito">
   <button (click)="destroyClick()" type="button" class="btn btn-remover">
         <i class="fa fa-minus"> </i>
   </button>

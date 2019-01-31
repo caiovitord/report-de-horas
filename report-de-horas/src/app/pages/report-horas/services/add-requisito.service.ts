@@ -8,12 +8,17 @@ import { RhFormComponent } from './../rh-form/rh-form.component';
 export class AddRequisitoService {
 
 
-
+  public formComponents: RhFormComponent[] = [];
 
   constructor(
     private qtdFormsService: QuantidadeFormsService,
     private factoryResolver: ComponentFactoryResolver) {
   }
+
+ removeComponent(): any {
+    this.formComponents.pop();
+  }
+
 
   createAnotherForm(viewContainerRef: ViewContainerRef): any {
     this.qtdFormsService.quantidadeDeFormularios++;

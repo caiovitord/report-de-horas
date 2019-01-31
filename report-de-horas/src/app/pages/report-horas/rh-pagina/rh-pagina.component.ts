@@ -1,5 +1,6 @@
+import { DeleteRequisitoService } from './../services/delete-requisito.service';
 import { FormGroup } from '@angular/forms';
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, ComponentRef } from '@angular/core';
 
 import { AddRequisitoService } from './../services/add-requisito.service';
 import { PageHeaderService } from './../../../estrutura/container/page-header/page-header.service';
@@ -19,14 +20,14 @@ export class RhPaginaComponent implements OnInit, AfterViewInit {
   @ViewChild('appContainer') appContainer;
   @ViewChild('primeiroForm') primeiroForm;
 
-  public formComponents: RhFormComponent[] = [];
+
 
 
   constructor(
     private pageHeaderService: PageHeaderService,
     private addRequisitoService: AddRequisitoService,
     private gerarCsvService: CsvGeneratorService,
-    private elem: ElementRef
+    private deleteRequisitoService: DeleteRequisitoService
     ) { }
 
   ngOnInit() {
@@ -45,17 +46,19 @@ export class RhPaginaComponent implements OnInit, AfterViewInit {
 
 
   addFormOnFormList(rhFormComponent: RhFormComponent) {
-    this.formComponents.push(rhFormComponent);
-    console.log(this.formComponents);
+    this.addRequisitoService.formComponents.push(rhFormComponent);
   }
 
   onAddRequisito() {
       const elemRef = this.addRequisitoService.createAnotherForm(this.appContainer.viewContainerRef);
+      this.deleteRequisitoService.dynamicFormComponentRef.push(elemRef);
       this.addFormOnFormList(elemRef.instance);
   }
 
+
+
   gerarCSV() {
-    this.gerarCsvService.gerarCSV(this.formComponents);
+    this.gerarCsvService.gerarCSV(this.addRequisitoService.formComponents);
   }
 
 }
