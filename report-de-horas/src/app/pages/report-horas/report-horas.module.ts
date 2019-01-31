@@ -9,6 +9,7 @@ import { TestesModule } from './../../testes/testes.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RhContainerComponent } from './rh-pagina/rh-container/rh-container.component';
+import { BtnRemoverRequisitoComponent } from './btn-remover-requisito/btn-remover-requisito.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { RhContainerComponent } from './rh-pagina/rh-container/rh-container.comp
     RhFormComponent,
     BtnAddRequisitoComponent,
     RhFormComponent,
-    RhContainerComponent
+    RhContainerComponent,
+    BtnRemoverRequisitoComponent
   ],
   entryComponents: [RhFormComponent, RhContainerComponent]
 })

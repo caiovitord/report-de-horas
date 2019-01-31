@@ -1,11 +1,11 @@
 <div class="panel panel-default">
-        <div class="panel-heading">Formulário {{formNumber}}</div>
+        <div class="panel-heading">Formulário {{formNumber}} 
+            <app-btn-remover-requisito [rhFormComponent]="this"></app-btn-remover-requisito>
+        </div>
+
     <div class="panel-body">
-        
         <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-
             <div class="form-group row">
-
                 <div class="col-sm-6">
                     <div class="form-group" [ngClass]="{'has-error' :verificaValidTouched('desenvolvedor') }">
                         <label for="desenvolvedor" class="control-label">Desenvolvedor</label>

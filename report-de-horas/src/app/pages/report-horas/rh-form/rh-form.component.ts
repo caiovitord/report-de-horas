@@ -31,7 +31,7 @@ export class RhFormComponent implements OnInit {
     private devService: DesenvolvedoresService,
     private requisitoService: RequisitoService,
     private qtdFormsService: QuantidadeFormsService,
-    private elem: ElementRef
+    public containerRef: ViewContainerRef
     ) { }
 
 
