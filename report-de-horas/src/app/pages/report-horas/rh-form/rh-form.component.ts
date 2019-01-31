@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AddRequisitoService } from './../btn-add-requisito/add-requisito.service';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -6,10 +7,12 @@ import { Observable } from 'rxjs';
 import { RequisitoService } from '../services/requisitos.service';
 import { DesenvolvedoresService } from '../services/desenvolvedores.service';
 
+
 @Component({
   selector: 'app-rh-form',
   templateUrl: './rh-form.component.html',
   styleUrls: ['./rh-form.component.css']
+
 })
 export class RhFormComponent implements OnInit {
 
@@ -18,24 +21,29 @@ export class RhFormComponent implements OnInit {
 
   requisitos$: Observable<any>;
 
-  cargos: any;
+  desenvolvedores: any;
   area: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private devService: DesenvolvedoresService,
-    private requisitoService: RequisitoService) { }
+    private requisitoService: RequisitoService,
+    private addRequisitoService: AddRequisitoService,
+    private viewContainerRef: ViewContainerRef
+    ) { }
+
+
 
   ngOnInit() {
 
 
     this.requisitos$ = this.requisitoService.getRequisitos();
-    this.cargos = this.devService.getCargos();
+    this.desenvolvedores = this.devService.getCargos();
     this.area = this.devService.getArea();
 
     this.formulario = this.formBuilder.group({
       requisito: [null, [Validators.required]],
-      cargo: [null, [Validators.required]],
+      desenvolvedor: [null, [Validators.required]],
       area: [null, [Validators.required]],
       horasTrabalhadas: [null, [Validators.required, Validators.min(0.1)]],
       diaTrabalho: [null, [Validators.required]],
@@ -61,6 +69,11 @@ export class RhFormComponent implements OnInit {
 
   }
 
+  verificaValidTouched(nomeCampo) {
+    const formControl  = this.formulario.get(nomeCampo);
+
+    return formControl.touched && formControl.invalid;
+  }
 
 
 
@@ -99,6 +112,11 @@ export class RhFormComponent implements OnInit {
         Math.ceil(formHorasTrabalhadas.value)
       );
     }
+  }
+
+  onAddRequisito() {
+    
+    
   }
 
   onSubmit() {

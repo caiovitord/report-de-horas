@@ -3,65 +3,82 @@
     <div class="form-group row">
 
         <div class="col-sm-6">
-            
-            <label for="cargo" class="control-label">Desenvolvedor</label>
-            <select class="form-control" formControlName="cargo">
-                <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{ cargo.nome }}</option>
-            </select>
-            <small class="form-text text-muted">
-                Selecione o desenvolvedor para o requisito.
-            </small>
-
+            <div class="form-group" [ngClass]="{'has-error' :verificaValidTouched('desenvolvedor') }">
+                <label for="desenvolvedor" class="control-label">Desenvolvedor</label>
+                <select class="form-control" formControlName="desenvolvedor">
+                    <option *ngFor="let dev of desenvolvedores" [ngValue]="dev">{{ dev.nome }}</option>
+                </select>
+                <small class="form-text text-muted" [style.display]=" verificaValidTouched('desenvolvedor') ? 'none' : 'block'">
+                    Selecione o desenvolvedor para o requisito.
+                </small>
+                <app-error-msg [mostrarErro]="verificaValidTouched('desenvolvedor')" msgErro="O desenvolvedor é obrigatório."></app-error-msg>
+            </div>
         </div>
 
         <div class="col-sm-6">
-            <label for="requisito">Requisito</label>
-            <ng-select [items]="requisitos$ | async" bindLabel="nome" bindValue="id" [virtualScroll]="true"
-                formControlName="requisito">
-            </ng-select>
-            <small class="form-text text-muted">
-                Escolha o requisito trabalhado.
-            </small>
-
+            <div class="form-group" [ngClass]="{'has-error' :verificaValidTouched('requisito') }">
+                <label for="requisito">Requisito</label>
+                <ng-select [items]="requisitos$ | async" bindLabel="nome" bindValue="id" [virtualScroll]="true"
+                    formControlName="requisito">
+                </ng-select>
+                <small class="form-text text-muted" [style.display]=" verificaValidTouched('requisito') ? 'none' : 'block'">
+                    Escolha o requisito trabalhado.
+                </small>
+                <app-error-msg [mostrarErro]="verificaValidTouched('requisito')" msgErro="O requisito é obrigatório."></app-error-msg>
+            </div>
         </div>
     </div>
 
     <div class="form-group row">
 
         <div class="col-sm-3">
-            <label for="area" class="control-label">Front/Back</label>
-            <select class="form-control" formControlName="area">
-                <option *ngFor="let area of area " [ngValue]="area">{{ area.nome }}</option>
-            </select>
-            <small class="form-text text-muted">
-                Selecione a área para o requisito.
-            </small>
+            <div class="form-group" [ngClass]="{'has-error' :verificaValidTouched('area') }">
+                <label for="area" class="control-label">Front/Back</label>
+                <select class="form-control" formControlName="area">
+                    <option *ngFor="let area of area " [ngValue]="area">{{ area.nome }}</option>
+                </select>
+                <small class="form-text text-muted" [style.display]=" verificaValidTouched('area') ? 'none' : 'block'">
+                    Selecione a área para o requisito.
+                </small>
+                <app-error-msg [mostrarErro]="verificaValidTouched('area')" msgErro="Escolher a área é obrigatório."></app-error-msg>
+            </div>
         </div>
 
         <div class="col-sm-3">
-            <label for="horasTrabalhadas">Horas trabalhadas</label>
-            <input class="form-control" id="horasTrabalhadas" min="0" type="number" step="0.5" formControlName="horasTrabalhadas"
-                placeholder="Horas trabalhadas">
-            <small class="form-text text-muted">
-                Insira a quantidade de horas trabalhadas nesse requisito, somente valores de meia em meia hora serão
-                aceitos.
-            </small>
+            <div class="form-group" [ngClass]="{'has-error' :verificaValidTouched('horasTrabalhadas') }">
+                <label for="horasTrabalhadas">Horas trabalhadas</label>
+                <input class="form-control" id="horasTrabalhadas" min="0" type="number" step="0.5" formControlName="horasTrabalhadas"
+                    placeholder="Horas trabalhadas">
+                <small class="form-text text-muted" [style.display]=" verificaValidTouched('horasTrabalhadas') ? 'none' : 'block'">
+                    Insira a quantidade de horas trabalhadas nesse requisito, somente valores de meia em meia hora
+                    serão
+                    aceitos.
+                </small>
+                <app-error-msg [mostrarErro]="verificaValidTouched('horasTrabalhadas')" msgErro="Quantidade de horas inválidas."></app-error-msg>
+            </div>
         </div>
 
         <div class="col-sm-3">
-            <label for="diaTrabalho">Dia trabalhado</label>
-            <input class="form-control" id="diaTrabalho" type="date" formControlName="diaTrabalho" placeholder="Selecione">
-            <small class="form-text text-muted">
-                Selecione o dia de trabalho para o requisito.
-            </small>
+            <div class="form-group" [ngClass]="{'has-error' :verificaValidTouched('diaTrabalho') }">
+                <label for="diaTrabalho">Dia trabalhado</label>
+                <input class="form-control" id="diaTrabalho" type="date" formControlName="diaTrabalho" placeholder="Selecione">
+                <small class="form-text text-muted" [style.display]=" verificaValidTouched('diaTrabalho') ? 'none' : 'block'">
+                    Selecione o dia de trabalho para o requisito.
+                </small>
+                <app-error-msg [mostrarErro]="verificaValidTouched('diaTrabalho')" msgErro="Escolher o dia de trabalho é obrigatório."></app-error-msg>
+            </div>
         </div>
 
         <div class="col-sm-3">
-            <label for="conclusao">Porcentagem de conclusão do requisito</label>
-            <input class="form-control" id="conclusao" type="number" step="10" formControlName="conclusao" placeholder="Porcentagem concluída">
-            <small class="form-text text-muted">
-                Insira a porcentaem de conclusão do requisito, somente valores de 10% em 10% serão aceitos.
-            </small>
+            <div class="form-group" [ngClass]="{'has-error' :verificaValidTouched('conclusao') }">
+                <label for="conclusao">Porcentagem de conclusão</label>
+                <input class="form-control" id="conclusao" type="number" step="10" formControlName="conclusao"
+                    placeholder="Porcentagem concluída">
+                <small class="form-text text-muted" [style.display]=" verificaValidTouched('conclusao') ? 'none' : 'block'">
+                    Insira a porcentaem de conclusão do requisito, somente valores de 10% em 10% serão aceitos.
+                </small>
+                <app-error-msg [mostrarErro]="verificaValidTouched('conclusao')" msgErro="Porcentagem de conclusão inválida."></app-error-msg>
+            </div>
         </div>
 
         <div class="col-sm-12">
@@ -71,5 +88,10 @@
     </div>
 
     <app-form-debug [form]="formulario"></app-form-debug>
+
+    <app-btn-add-requisito (click)="onAddRequisito()"></app-btn-add-requisito>
+
+    <br> <br> <br>
+
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

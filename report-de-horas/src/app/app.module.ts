@@ -10,11 +10,11 @@ import { TestesModule } from './testes/testes.module';
 import { EstruturaModule } from './estrutura/estrutura.module';
 import { PagesModule } from './pages/pages.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -26,7 +26,8 @@ import { PagesModule } from './pages/pages.module';
 
     PagesModule,
     FormsModule,
-    TestesModule
+    TestesModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
