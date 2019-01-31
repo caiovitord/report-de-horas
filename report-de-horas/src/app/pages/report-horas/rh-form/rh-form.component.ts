@@ -18,7 +18,7 @@ export class RhFormComponent implements OnInit {
 
   requisitos$: Observable<any>;
 
-  cargos: any;
+  desenvolvedores: any;
   area: any;
 
   constructor(
@@ -30,12 +30,12 @@ export class RhFormComponent implements OnInit {
 
 
     this.requisitos$ = this.requisitoService.getRequisitos();
-    this.cargos = this.devService.getCargos();
+    this.desenvolvedores = this.devService.getCargos();
     this.area = this.devService.getArea();
 
     this.formulario = this.formBuilder.group({
       requisito: [null, [Validators.required]],
-      cargo: [null, [Validators.required]],
+      desenvolvedor: [null, [Validators.required]],
       area: [null, [Validators.required]],
       horasTrabalhadas: [null, [Validators.required, Validators.min(0.1)]],
       diaTrabalho: [null, [Validators.required]],
