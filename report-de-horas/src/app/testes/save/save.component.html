@@ -3,5 +3,6 @@
   <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <input type="text" formControlName="inputText">
     <button [disabled]="!formulario.valid" type="submit">Baixar</button>
+    <app-form-debug [form]="formulario"></app-form-debug>
   </form>
 </div>

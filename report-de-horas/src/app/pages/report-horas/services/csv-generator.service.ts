@@ -13,15 +13,39 @@ export class CsvGeneratorService {
   gerarCSV(rhFormComponents: RhFormComponent[]) {
     const values: Object[] = [];
 
+    let stringCSV = '';
+
     rhFormComponents.forEach(element => {
       values.push(element.formulario.value);
     });
 
-    console.log(values);
-    const mString = JSON.stringify(values[0]);
-    console.log("Stringuificado" + mString);
+    // console.log(values);
 
-    console.log(Object.keys(values[0]));
-    console.log(Object.values(values[0]));
+    const mString = JSON.stringify(values[0]);
+
+    // console.log("Stringuificado" + mString);
+
+    for (let i = 0; i < values.length ; i++) {
+      if ( i === 0 ) {
+        Object.keys(values[i]).forEach( v => stringCSV  += v + ',');
+        stringCSV += '\r\n';
+     }
+     Object.values(values[i]).forEach( v => stringCSV  += v + ',');
+     stringCSV += '\r\n';
+
+    }
+
+    const find = ',\r\n';
+    const regEx = new RegExp(find, 'g');
+
+    stringCSV = stringCSV.replace(regEx, '\r\n'); //Isso tira as vírgulas extras do final do código
+    // console.log(stringCSV);
+
+    const FileSaver = require('file-saver');
+    const blob = new Blob([stringCSV], {type: 'text/plain;charset=utf-8'});
+    FileSaver.saveAs(blob, 'ReportHoras.csv');
+
+    // console.log(Object.keys(values[0]));
+    // console.log(Object.values(values[0]));
   }
 }
