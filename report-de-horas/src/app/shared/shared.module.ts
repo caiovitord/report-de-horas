@@ -8,7 +8,7 @@ import { ErrorMsgComponent } from './error-msg/error-msg.component';
   ],
   declarations: [
     ErrorMsgComponent
-  ]
+  ],
   exports: [ErrorMsgComponent]
 })
 export class SharedModule { }
