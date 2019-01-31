@@ -1,3 +1,4 @@
+import { CsvGeneratorService } from './../services/csv-generator.service';
 import { AddRequisitoService } from './../btn-add-requisito/add-requisito.service';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -30,6 +31,7 @@ export class RhFormComponent implements OnInit {
     private requisitoService: RequisitoService,
     private addRequisitoService: AddRequisitoService,
     private viewContainerRef: ViewContainerRef
+    private gerarCsvService: CsvGeneratorService
     ) { }
 
 
@@ -95,9 +97,6 @@ export class RhFormComponent implements OnInit {
 
 
 
-
-
-
   onHorasTrabalhadasChanged(valor: number) {
     const formHorasTrabalhadas = this.formulario.get('horasTrabalhadas');
 
@@ -114,9 +113,12 @@ export class RhFormComponent implements OnInit {
     }
   }
 
+  gerarCSV() {
+    this.gerarCsvService.gerarCSV(this.formulario.value);
+  }
+
   onAddRequisito() {
-    
-    
+
   }
 
   onSubmit() {
