@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AddRequisitoService } from './../btn-add-requisito/add-requisito.service';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -6,10 +7,12 @@ import { Observable } from 'rxjs';
 import { RequisitoService } from '../services/requisitos.service';
 import { DesenvolvedoresService } from '../services/desenvolvedores.service';
 
+
 @Component({
   selector: 'app-rh-form',
   templateUrl: './rh-form.component.html',
   styleUrls: ['./rh-form.component.css']
+
 })
 export class RhFormComponent implements OnInit {
 
@@ -24,7 +27,12 @@ export class RhFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private devService: DesenvolvedoresService,
-    private requisitoService: RequisitoService) { }
+    private requisitoService: RequisitoService,
+    private addRequisitoService: AddRequisitoService,
+    private viewContainerRef: ViewContainerRef
+    ) { }
+
+
 
   ngOnInit() {
 
@@ -104,6 +112,11 @@ export class RhFormComponent implements OnInit {
         Math.ceil(formHorasTrabalhadas.value)
       );
     }
+  }
+
+  onAddRequisito() {
+    
+    
   }
 
   onSubmit() {
