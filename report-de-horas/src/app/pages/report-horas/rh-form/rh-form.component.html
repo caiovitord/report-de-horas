@@ -11,6 +11,7 @@
             <small class="form-text text-muted">
                 Selecione o desenvolvedor para o requisito.
             </small>
+            <app-error-msg [mostrarErro]="verificaValidTouched('cargo')" msgErro="O desenvolvedor é obrigatório."></app-error-msg>
 
         </div>
 

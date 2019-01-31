@@ -7,6 +7,7 @@ import { RhFormComponent } from './rh-form/rh-form.component';
 import { BtnAddRequisitoComponent } from './btn-add-requisito/btn-add-requisito.component';
 import { TestesModule } from './../../testes/testes.module';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ReactiveFormsModule,
     TestesModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   declarations: [
     RhPaginaComponent,

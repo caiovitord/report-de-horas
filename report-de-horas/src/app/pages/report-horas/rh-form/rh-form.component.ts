@@ -61,6 +61,11 @@ export class RhFormComponent implements OnInit {
 
   }
 
+  verificaValidTouched(nomeCampo) {
+    const formControl  = this.formulario.get(nomeCampo);
+
+    return formControl.touched && formControl.invalid;
+  }
 
 
 

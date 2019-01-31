@@ -9,12 +9,12 @@ import { RouterModule } from '@angular/router';
 import { TestesModule } from './testes/testes.module';
 import { EstruturaModule } from './estrutura/estrutura.module';
 import { PagesModule } from './pages/pages.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
   ],
   imports: [
     BrowserModule,
