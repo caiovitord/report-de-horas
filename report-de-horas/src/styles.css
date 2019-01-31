@@ -4,3 +4,38 @@ html{
 body{
     height: 100% !important;
 }
+
+.skin-blue .main-header .navbar{
+    background-color: #8BCF9D ;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #71af82;
+}
+
+.skin-blue .main-header .logo:hover {
+    background-color:  #5a8867;
+}
+
+.skin-blue .sidebar-menu > li:hover > a, .skin-blue .sidebar-menu > li.active > a, .skin-blue .sidebar-menu > li.menu-open > a {
+    background-color: #596869;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover{
+    background-color: #779882;
+}
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #596869;
+}
+
+.btn-primary {
+    background-color: #336666;
+    border-color: #448282;
+}
+
+
+.btn-primary:hover {
+    background-color: #4b9595;
+    border-color: #448282;
+}

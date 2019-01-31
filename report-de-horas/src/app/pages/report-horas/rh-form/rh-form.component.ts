@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { RequisitoService } from '../services/requisitos.service';
 import { DesenvolvedoresService } from '../services/desenvolvedores.service';
-import { AddRequisitoService } from './../services/add-requisito.service';
+import { QuantidadeFormsService } from '../services/quantidade-forms.service';
 
 @Component({
   selector: 'app-rh-form',
@@ -30,6 +30,7 @@ export class RhFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private devService: DesenvolvedoresService,
     private requisitoService: RequisitoService,
+    private qtdFormsService: QuantidadeFormsService,
     private elem: ElementRef
     ) { }
 
@@ -37,6 +38,7 @@ export class RhFormComponent implements OnInit {
 
   ngOnInit() {
 
+    this.formNumber = this.qtdFormsService.quantidadeDeFormularios;
 
     this.requisitos$ = this.requisitoService.getRequisitos();
     this.desenvolvedores = this.devService.getCargos();

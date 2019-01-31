@@ -1,24 +1,23 @@
-import { FormGroup } from '@angular/forms';
-import { RhFormComponent } from './../rh-form/rh-form.component';
+import { QuantidadeFormsService } from './quantidade-forms.service';
 import { Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
-import { ComponentRef } from '@angular/core/src/render3';
-import { RhContainerComponent } from '../rh-pagina/rh-container/rh-container.component';
+import { RhFormComponent } from './../rh-form/rh-form.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddRequisitoService {
 
-  public quantidadeDeFormularios = 1; // Sempre já tem ao menos  um form
 
 
-  constructor(private factoryResolver: ComponentFactoryResolver) {
+
+  constructor(
+    private qtdFormsService: QuantidadeFormsService,
+    private factoryResolver: ComponentFactoryResolver) {
   }
 
   createAnotherForm(viewContainerRef: ViewContainerRef): any {
-    this.quantidadeDeFormularios++;
+    this.qtdFormsService.quantidadeDeFormularios++;
     const componentFactory = this.factoryResolver.resolveComponentFactory(RhFormComponent);
-    //viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
     return componentRef;
   }

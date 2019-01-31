@@ -6,7 +6,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu tree" data-widget="tree">
       
-      <li class="treeview">
+      <!--li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i> <span>Formulário </span>
           <span class="pull-right-container">
@@ -17,17 +17,17 @@
           <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> Adicionar Horas</a></li>
           <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editar Dados</a></li>
         </ul>
-      </li>
+      </li-->
       
-      <li class="treeview">
+      <li class="treeview" [routerLinkActive]="['open', 'menu-open']">
         <a href="#">
           <i class="fa fa-book"></i> <span>Report de Horas</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        <ul class="treeview-menu">
-          <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> Visualizar Informações</a></li>
+        <ul class="treeview-menu" [routerLinkActive]="['disp-block']">
+          <li><a [routerLink]="['/']" ><i class="fa fa-circle-o"></i> Formulário</a></li>
         </ul>
       </li>
 
