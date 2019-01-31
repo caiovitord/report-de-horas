@@ -1,4 +1,4 @@
-<div *ngIf="msgErro != null && mostrarErro" >
+<div [style.display]="mostrarErro ? 'block' : 'none'"  [@fadeInOut]="mostrarErro ? 'fadeIn' : 'fadeOut'">
   <span class="sr-only">(error)</span>
   <div class="alert alert-danger errorDiv" role="alert">
     {{ msgErro }}

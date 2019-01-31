@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
 import { TestesModule } from './testes/testes.module';
 import { EstruturaModule } from './estrutura/estrutura.module';
 import { PagesModule } from './pages/pages.module';
-import { SharedModule } from './shared/shared.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { SharedModule } from './shared/shared.module';
 
     PagesModule,
     FormsModule,
-    TestesModule
+    TestesModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
