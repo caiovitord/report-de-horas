@@ -34,9 +34,22 @@ body{
     border-color: #448282;
 }
 
+.btn-primary:focus{
+    background-color: #529696;
+    border-color: #448282;
+}
+
+
+
+.btn-primary:active {
+    background-color: #529696;
+    border-color: #448282;
+}
+
 
 .btn-primary:hover {
-    background-color: #4b9595;
-    border-color: #448282;
+    background-color:  #4b9595;
+    border-color:  #448282;
+    transition-duration: 0.4s;
 }
 

@@ -2,5 +2,6 @@
     display: block;
 }
 .disp-none{
-    display: none!important;
+    opacity: 0!important;
+    transition-duration: 0.2s;
 }

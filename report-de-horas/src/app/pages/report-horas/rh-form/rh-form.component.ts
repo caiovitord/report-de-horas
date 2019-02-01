@@ -7,10 +7,37 @@ import { RequisitoService } from '../services/requisitos.service';
 import { DesenvolvedoresService } from '../services/desenvolvedores.service';
 import { QuantidadeFormsService } from '../services/quantidade-forms.service';
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
+
+
 @Component({
   selector: 'app-rh-form',
   templateUrl: './rh-form.component.html',
-  styleUrls: ['./rh-form.component.css']
+  styleUrls: ['./rh-form.component.css'],
+
+  animations: [
+    trigger('fadeInOut', [
+      state('fadeIn', style({
+        opacity: 1
+      })),
+      state('fadeOut', style({
+        opacity: 0
+      })),
+      transition('fadeIn => fadeOut', [
+        animate('0.3s')
+      ]),
+      transition('fadeOut => fadeIn', [
+        animate('0.3s')
+      ]),
+    ]),
+  ]
 
 })
 export class RhFormComponent implements OnInit {
@@ -23,6 +50,8 @@ export class RhFormComponent implements OnInit {
 
   desenvolvedores: any;
   area: any;
+
+  public destruir  = false;
 
   public formNumber: number;
 
@@ -53,7 +82,7 @@ export class RhFormComponent implements OnInit {
         observacao: [null, ]
       });
 
-      
+
     this.impedirValoresNegativos();
 
 
@@ -88,7 +117,6 @@ export class RhFormComponent implements OnInit {
     const restoZero = (valor / 10) % 1;
 
     if (restoZero !== 0) {
-      // console.log('Arredondou');
       formConclusao.setValue(
         valor * 10 // Ajudao usuário a digitar, 1 , 2 , 3 , e já colocar o valor mais apropriado
       );
@@ -106,7 +134,6 @@ export class RhFormComponent implements OnInit {
     const restoZero = (valor / 0.5) % 1;
 
     if (restoZero !== 0) {
-      // console.log('Arredondou');
       formHorasTrabalhadas.setValue(
         Math.ceil(formHorasTrabalhadas.value)
       );

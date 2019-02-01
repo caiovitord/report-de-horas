@@ -19,14 +19,14 @@
         </ul>
       </li-->
       
-      <li class="treeview" [routerLinkActive]="['open', 'menu-open']">
+      <li class="treeview" (click)="toggle()" [routerLinkActive]="['open', 'menu-open']">
         <a href="#">
           <i class="fa fa-book"></i> <span>Report de Horas</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        <ul class="treeview-menu" [routerLinkActive]="['disp-block']" [class.disp-none]="!isOpen">
+        <ul class="treeview-menu"   [class.disp-block]="isOpen" [class.disp-none]="!isOpen">
           <li><a [routerLink]="['/']" ><i class="fa fa-circle-o"></i> Formulário</a></li>
         </ul>
       </li>
