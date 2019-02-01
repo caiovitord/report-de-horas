@@ -7,6 +7,7 @@ import { PageHeaderService } from './../../../estrutura/container/page-header/pa
 import { CsvGeneratorService } from '../services/csv-generator.service';
 import { RhContainerComponent } from './rh-container/rh-container.component';
 import { RhFormComponent } from '../rh-form/rh-form.component';
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-rh-pagina',
@@ -28,7 +29,7 @@ export class RhPaginaComponent implements OnInit, AfterViewInit {
     private addRequisitoService: AddRequisitoService,
     private gerarCsvService: CsvGeneratorService,
     private deleteRequisitoService: DeleteRequisitoService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.pageHeaderService.titulo = 'Report de Horas';
@@ -50,15 +51,33 @@ export class RhPaginaComponent implements OnInit, AfterViewInit {
   }
 
   onAddRequisito() {
-      const elemRef = this.addRequisitoService.createAnotherForm(this.appContainer.viewContainerRef);
-      this.deleteRequisitoService.dynamicFormComponentRef.push(elemRef);
-      this.addFormOnFormList(elemRef.instance);
+    const elemRef = this.addRequisitoService.createAnotherForm(this.appContainer.viewContainerRef);
+    this.deleteRequisitoService.dynamicFormComponentRef.push(elemRef);
+    this.addFormOnFormList(elemRef.instance);
   }
 
 
 
-  gerarCSV() {
-    this.gerarCsvService.gerarCSV(this.addRequisitoService.formComponents);
-  }
+  gerarCSV(rhFormComponent: RhFormComponent) {
+    let todosValidos = true;
+    this.addRequisitoService.formComponents.forEach(cada => {
+      if (!cada.formulario.valid)
+        todosValidos = false;
+    })
 
+    if (todosValidos) {
+      this.gerarCsvService.gerarCSV(this.addRequisitoService.formComponents);
+    } else {
+
+      this.addRequisitoService.formComponents.forEach(cada => {
+        Object.keys(cada.formulario.controls).forEach(campo => {
+//          console.log(campo);
+          const controle = cada.formulario.get(campo);
+         controle.markAsTouched();
+
+        })
+
+      });
+  }
+  }
 }
