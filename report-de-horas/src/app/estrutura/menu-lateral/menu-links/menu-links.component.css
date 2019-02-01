@@ -1,3 +1,6 @@
 .disp-block{
     display: block;
 }
+.disp-none{
+    display: none!important;
+}

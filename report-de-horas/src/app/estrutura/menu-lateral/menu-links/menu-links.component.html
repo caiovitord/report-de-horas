@@ -26,7 +26,7 @@
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        <ul class="treeview-menu" [routerLinkActive]="['disp-block']">
+        <ul class="treeview-menu" [routerLinkActive]="['disp-block']" [class.disp-none]="!isOpen">
           <li><a [routerLink]="['/']" ><i class="fa fa-circle-o"></i> Formulário</a></li>
         </ul>
       </li>

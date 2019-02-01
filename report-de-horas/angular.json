@@ -25,10 +25,9 @@
             "styles": [
               "./node_modules/font-awesome/css/font-awesome.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
-             // "./node_modules/bootstrap/dist/css/bootstrap-theme.css",
               "./node_modules/@ng-select/ng-select/themes/default.theme.css",
               "./node_modules/admin-lte/dist/css/skins/skin-blue.css",
-              "./node_modules/admin-lte/dist/css/AdminLTE.css",
+              "src/assets/css/AdminLTE.css",
               "src/styles.css"
             ],
             "scripts": [

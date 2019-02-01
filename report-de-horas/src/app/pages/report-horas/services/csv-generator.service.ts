@@ -46,6 +46,10 @@ export class CsvGeneratorService {
     stringCSV = stringCSV.replace(regEx, '\r\n'); //Isso tira as vírgulas extras do final do código
     // console.log(stringCSV);
 
+    const find2 = 'null';
+    const regEx2 = new RegExp(find, 'g');
+    stringCSV = stringCSV.replace(regEx, ''); // Isso tira a observação nula, caso ocorra
+
     const FileSaver = require('file-saver');
     const blob = new Blob([stringCSV], {type: 'text/plain;charset=utf-8'});
     FileSaver.saveAs(blob, 'ReportHoras.csv');

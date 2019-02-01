@@ -9,6 +9,12 @@ export class MenuLinksComponent implements OnInit {
 
   constructor() { }
 
+  isOpen = true;
+
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
+
   ngOnInit() {
   }
 
