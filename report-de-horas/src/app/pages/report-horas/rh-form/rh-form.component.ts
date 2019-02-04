@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { RequisitoService } from '../services/requisitos.service';
-import { DesenvolvedoresService } from '../services/desenvolvedores.service';
+import { RequisitesService } from '../services/requisites.service';
+import { DevelopersService } from '../services/developers.service';
 import { QuantidadeFormsService } from '../services/quantidade-forms.service';
 
 import {
@@ -57,8 +57,8 @@ export class RhFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private devService: DesenvolvedoresService,
-    private requisitoService: RequisitoService,
+    private devService: DevelopersService,
+    private requisitoService: RequisitesService,
     private qtdFormsService: QuantidadeFormsService,
     ) { }
 
@@ -100,7 +100,7 @@ export class RhFormComponent implements OnInit {
 
   }
 
-  verificaValidTouched(nomeCampo) {
+  verifyValidTouched(nomeCampo) {
     const formControl  = this.formulario.get(nomeCampo);
 
     return formControl.touched && formControl.invalid;

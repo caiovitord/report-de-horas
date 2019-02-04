@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RhPaginaComponent } from './rh-pagina.component';
+import { AdminRootComponent } from './admin-root.component';
 
-describe('RhPaginaComponent', () => {
-  let component: RhPaginaComponent;
-  let fixture: ComponentFixture<RhPaginaComponent>;
+describe('AdminRaizComponent', () => {
+  let component: AdminRootComponent;
+  let fixture: ComponentFixture<AdminRootComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RhPaginaComponent ]
+      declarations: [ AdminRootComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RhPaginaComponent);
+    fixture = TestBed.createComponent(AdminRootComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

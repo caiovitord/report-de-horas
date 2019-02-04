@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BtnRemoverRequisitoComponent } from './btn-remover-requisito.component';
+import { BtnRemoveRequisiteComponent } from './btn-remove-requisite.component';
 
 describe('BtnRemoverRequisitoComponent', () => {
-  let component: BtnRemoverRequisitoComponent;
-  let fixture: ComponentFixture<BtnRemoverRequisitoComponent>;
+  let component: BtnRemoveRequisiteComponent;
+  let fixture: ComponentFixture<BtnRemoveRequisiteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BtnRemoverRequisitoComponent ]
+      declarations: [ BtnRemoveRequisiteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BtnRemoverRequisitoComponent);
+    fixture = TestBed.createComponent(BtnRemoveRequisiteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

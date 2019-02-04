@@ -1,10 +1,10 @@
-import { EstruturaModule } from './estrutura.module';
+import { LayoutModule } from './layout.module';
 
 describe('EstruturaModule', () => {
-  let estruturaModule: EstruturaModule;
+  let estruturaModule: LayoutModule;
 
   beforeEach(() => {
-    estruturaModule = new EstruturaModule();
+    estruturaModule = new LayoutModule();
   });
 
   it('should create an instance', () => {

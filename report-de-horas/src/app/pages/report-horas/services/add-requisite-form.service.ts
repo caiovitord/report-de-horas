@@ -1,11 +1,11 @@
 import { QuantidadeFormsService } from './quantidade-forms.service';
 import { Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
-import { RhFormComponent } from './../rh-form/rh-form.component';
+import { RhFormComponent } from '../rh-form/rh-form.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddRequisitoService {
+export class AddRequisiteFormService {
 
 
   public formComponents: RhFormComponent[] = [];

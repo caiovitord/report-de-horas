@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { DeleteRequisitoService } from './delete-requisito.service';
+import { DeleteRequisiteService } from './delete-requisite.service';
 
 describe('DeleteRequisitoService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DeleteRequisitoService]
+      providers: [DeleteRequisiteService]
     });
   });
 
-  it('should be created', inject([DeleteRequisitoService], (service: DeleteRequisitoService) => {
+  it('should be created', inject([DeleteRequisiteService], (service: DeleteRequisiteService) => {
     expect(service).toBeTruthy();
   }));
 });

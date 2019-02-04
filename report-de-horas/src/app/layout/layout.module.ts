@@ -1,37 +1,39 @@
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 
 import { HeaderComponent } from './header/header.component';
-import { AdminRaizComponent } from './admin-raiz/admin-raiz.component';
+import { AdminRootComponent } from './admin-root/admin-root.component';
 import { NavBarComponent } from './header/nav-bar/nav-bar.component';
 import { ContainerComponent } from './container/container.component';
 import { PageHeaderComponent } from './container/page-header/page-header.component';
-import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
-import { MenuHeaderComponent } from './menu-lateral/menu-header/menu-header.component';
-import { MenuLinksComponent } from './menu-lateral/menu-links/menu-links.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { MenuHeaderComponent } from './side-menu/menu-header/menu-header.component';
+import { MenuLinksComponent } from './side-menu/menu-links/menu-links.component';
 import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    HttpModule
   ],
   declarations: [
     HeaderComponent,
-    AdminRaizComponent,
+    AdminRootComponent,
     NavBarComponent,
     ContainerComponent,
     PageHeaderComponent,
-    MenuLateralComponent,
+    SideMenuComponent,
     MenuHeaderComponent,
     MenuLinksComponent,
     FooterComponent
   ],
   exports: [
-    AdminRaizComponent
+    AdminRootComponent
   ]
 })
-export class EstruturaModule { }
+export class LayoutModule { }

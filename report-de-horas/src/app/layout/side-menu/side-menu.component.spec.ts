@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminRaizComponent } from './admin-raiz.component';
+import { SideMenuComponent } from './side-menu.component';
 
-describe('AdminRaizComponent', () => {
-  let component: AdminRaizComponent;
-  let fixture: ComponentFixture<AdminRaizComponent>;
+describe('MenuLateralComponent', () => {
+  let component: SideMenuComponent;
+  let fixture: ComponentFixture<SideMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminRaizComponent ]
+      declarations: [ SideMenuComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminRaizComponent);
+    fixture = TestBed.createComponent(SideMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

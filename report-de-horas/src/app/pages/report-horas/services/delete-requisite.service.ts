@@ -1,4 +1,4 @@
-import { AddRequisitoService } from './add-requisito.service';
+import { AddRequisiteFormService } from './add-requisite-form.service';
 import { Injectable, ComponentRef } from '@angular/core';
 import { RhFormComponent } from '../rh-form/rh-form.component';
 import { delay } from 'q';
@@ -6,7 +6,7 @@ import { delay } from 'q';
 @Injectable({
   providedIn: 'root'
 })
-export class DeleteRequisitoService {
+export class DeleteRequisiteService {
 
   public dynamicFormComponentRef: ComponentRef<RhFormComponent>[] = [];
 
@@ -14,7 +14,7 @@ export class DeleteRequisitoService {
     const index = formNumber - 2; // Menos um por que não conta o primeiro form, e menos um novamente por que é zero based
 
     this.dynamicFormComponentRef[index].instance.destruir = true;
-    this.addRequisitoService.removeComponent();
+    this.addRequisiteFormService.removeComponent();
 
     await delay(500);
 
@@ -22,5 +22,5 @@ export class DeleteRequisitoService {
 
   }
 
-  constructor( private addRequisitoService: AddRequisitoService) { }
+  constructor( private addRequisiteFormService: AddRequisiteFormService) { }
 }

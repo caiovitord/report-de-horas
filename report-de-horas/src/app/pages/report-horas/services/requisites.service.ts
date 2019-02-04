@@ -9,7 +9,7 @@ const END_POINT = 'assets/dados/requisitos.json';
   providedIn: 'root'
 })
 
-export class RequisitoService {
+export class RequisitesService {
 
   constructor(private http: Http) { }
 

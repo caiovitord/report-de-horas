@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { TestesModule } from './testes/testes.module';
-import { EstruturaModule } from './estrutura/estrutura.module';
+import { LayoutModule} from './layout/layout.module';
 import { PagesModule } from './pages/pages.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,10 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    EstruturaModule,
+    LayoutModule,
     RouterModule,
     AppRoutingModule,
-    HttpModule,
     SharedModule,
     PagesModule,
     FormsModule,

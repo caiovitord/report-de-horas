@@ -1,12 +1,12 @@
-import { AdminRaizComponent } from './estrutura/admin-raiz/admin-raiz.component';
+import { AdminRootComponent } from './layout/admin-root/admin-root.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { RhPaginaComponent } from './pages/report-horas/rh-pagina/rh-pagina.component';
+import { RhPageComponent } from './pages/report-horas/rh-page/rh-page.component';
 
 const routes: Routes = [
-    { path: '', component: RhPaginaComponent } // ,
+    { path: '', component: RhPageComponent } // ,
     // { path: '', component: FeatureComponent },
     // { path: '**', component: PageNotFoundComponent },
 ];

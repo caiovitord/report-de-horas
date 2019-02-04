@@ -7,22 +7,11 @@ import { Injectable } from '@angular/core';
 // Serviço responsável por prover o nome da página ao page header
 export class PageHeaderService {
 
-  titulo = '';
-  descricao  = '';
-  nivelSuperior = '';
+  title = '';
+  description  = '';
+  upperLevel = '';
 
   constructor() { }
 
-  getTitulo() {
-    return this.titulo;
-  }
-
-  getDescricao() {
-    return this.descricao;
-  }
-
-  getNivelSuperior() {
-    return this.nivelSuperior;
-  }
 
 }
