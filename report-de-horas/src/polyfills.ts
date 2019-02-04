@@ -78,3 +78,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+import 'jquery/src/jquery';
+import 'bootstrap/dist/js/bootstrap.js';
+import 'admin-lte/dist/js/adminlte.js';

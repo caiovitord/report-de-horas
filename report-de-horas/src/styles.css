@@ -33,8 +33,6 @@
     border-color: #448282;
 }
 
-
-
 .btn-primary:active {
     background-color: #529696;
     border-color: #448282;
@@ -50,3 +48,10 @@
 ng-select.ng-invalid.ng-touched .ng-select-container {
     border-color: #dc3545;
 }
+
+/* APPLICATION CSS IMPORTS */
+@import url("./../node_modules/bootstrap/dist/css/bootstrap.css");
+@import url("./../node_modules/font-awesome/css/font-awesome.css");
+@import url("./../node_modules/admin-lte/dist/css/skins/skin-blue.css");
+@import url("./assets/css/AdminLTE.css");
+@import url("./../node_modules/@ng-select/ng-select/themes/default.theme.css")

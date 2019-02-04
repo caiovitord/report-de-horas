@@ -22,7 +22,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
+            "styles": [ // Não é lido pelo webpack
               "./node_modules/font-awesome/css/font-awesome.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/@ng-select/ng-select/themes/default.theme.css",
@@ -30,7 +30,7 @@
               "src/assets/css/AdminLTE.css",
               "src/styles.css"
             ],
-            "scripts": [
+            "scripts": [ // Não é lido pelo webpack
               "./node_modules/jquery/dist/jquery.js",
               "./node_modules/admin-lte/dist/js/adminlte.js",
               "./node_modules/bootstrap/dist/js/bootstrap.js"

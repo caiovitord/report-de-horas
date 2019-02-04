@@ -1,6 +1,6 @@
-import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { RhFormComponent } from '../rh-form/rh-form.component';
+import { saveAs } from 'file-saver';
 
 declare var require: any;
 
@@ -54,7 +54,6 @@ export class CsvGeneratorService {
     const blob = new Blob([stringCSV], {type: 'text/plain;charset=utf-8'});
     FileSaver.saveAs(blob, 'ReportHoras.csv');
 
-    // console.log(Object.keys(values[0]));
-    // console.log(Object.values(values[0]));
+   
   }
 }
