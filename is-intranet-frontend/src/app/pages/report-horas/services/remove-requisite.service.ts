@@ -6,7 +6,7 @@ import { delay } from 'q';
 @Injectable({
   providedIn: 'root'
 })
-export class DeleteRequisiteService {
+export class RemoveRequisiteService {
 
   public dynamicFormComponentRef: ComponentRef<RhFormComponent>[] = [];
 

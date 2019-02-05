@@ -1,4 +1,4 @@
-import { EndPoints } from './../../../shared/endpoints';
+import { EndPoints } from '../endpoints';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Http } from '@angular/http';

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { RequisitesService } from '../services/requisites.service';
-import { DevelopersService } from '../services/developers.service';
+import { RequisitesService } from '../../../shared/services/requisites.service';
+import { DevelopersService } from '../../../shared/services/developers.service';
 import { QuantidadeFormsService } from '../services/quantidade-forms.service';
 
 import {

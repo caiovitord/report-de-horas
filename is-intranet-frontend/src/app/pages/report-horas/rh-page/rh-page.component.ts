@@ -1,5 +1,4 @@
-import { DeleteRequisiteService } from '../services/delete-requisite.service';
-import { FormGroup } from '@angular/forms';
+import { RemoveRequisiteService } from '../services/remove-requisite.service';
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, ComponentRef } from '@angular/core';
 
 import { AddRequisiteFormService } from '../services/add-requisite-form.service';
@@ -28,7 +27,7 @@ export class RhPageComponent implements OnInit, AfterViewInit {
     private pageHeaderService: PageHeaderService,
     private addRequisitesFormService: AddRequisiteFormService,
     private gerarCsvService: CsvGeneratorService,
-    private deleteRequisiteService: DeleteRequisiteService
+    private removeRequisiteService: RemoveRequisiteService
   ) { }
 
   ngOnInit() {
@@ -52,7 +51,7 @@ export class RhPageComponent implements OnInit, AfterViewInit {
 
   onAddRequisite() {
     const elemRef = this.addRequisitesFormService.createAnotherForm(this.appContainer.viewContainerRef);
-    this.deleteRequisiteService.dynamicFormComponentRef.push(elemRef);
+    this.removeRequisiteService.dynamicFormComponentRef.push(elemRef);
     this.addFormOnFormList(elemRef.instance);
   }
 

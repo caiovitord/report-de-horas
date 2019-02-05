@@ -19,6 +19,7 @@
                         <!--select class="form-control" formControlName="desenvolvedor">
                             <option *ngFor="let dev of desenvolvedores" [ngValue]="dev.nome">{{ dev.nome }}</option>
                         </select-->
+
                         <small class="form-text text-muted" [style.display]=" verifyValidTouched('desenvolvedor') ? 'none' : 'block'">
                             Selecione o desenvolvedor para o requisito.
                         </small>
@@ -31,7 +32,7 @@
                 <div class="col-sm-6">
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('requisito') }">
                         <label for="requisito">Requisito</label>
-                        <ng-select [items]="requisitos$ | async" bindLabel="nome" bindValue="id" [virtualScroll]="true"
+                        <ng-select [items]="requisitos$ | async" bindLabel="title" bindValue="id" [virtualScroll]="true"
                             formControlName="requisito">
                         </ng-select>
                         <small class="form-text text-muted" [style.display]=" verifyValidTouched('requisito') ? 'none' : 'block'">

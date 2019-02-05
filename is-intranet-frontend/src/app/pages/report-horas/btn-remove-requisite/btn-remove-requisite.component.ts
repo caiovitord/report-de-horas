@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { RhFormComponent } from '../rh-form/rh-form.component';
-import { DeleteRequisiteService } from '../services/delete-requisite.service';
+import { RemoveRequisiteService } from '../services/remove-requisite.service';
 
 @Component({
   selector: 'app-btn-remove-requisite',
@@ -12,14 +12,14 @@ export class BtnRemoveRequisiteComponent implements OnInit {
   @Input() rhFormComponent: RhFormComponent;
 
   constructor(
-    private deleteRequisiteService: DeleteRequisiteService) { }
+    private removeRequisiteService: RemoveRequisiteService) { }
 
   ngOnInit() {
 
   }
 
   destroyClick() {
-    this.deleteRequisiteService.deleteForm(this.rhFormComponent.formNumber);
+    this.removeRequisiteService.deleteForm(this.rhFormComponent.formNumber);
   }
 
 }
