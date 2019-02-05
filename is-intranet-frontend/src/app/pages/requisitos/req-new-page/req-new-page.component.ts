@@ -1,12 +1,12 @@
-import { PageHeaderService } from './../../../layout/container/page-header/page-header.service';
+import { PageHeaderService } from '../../../layout/container/page-header/page-header.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-req-page',
-  templateUrl: './req-page.component.html',
-  styleUrls: ['./req-page.component.css']
+  selector: 'app-req-new-page',
+  templateUrl: './req-new-page.component.html',
+  styleUrls: ['./req-new-page.component.css']
 })
-export class ReqPageComponent implements OnInit {
+export class ReqNewPageComponent implements OnInit {
 
   constructor(private pageHeaderService: PageHeaderService) { }
 

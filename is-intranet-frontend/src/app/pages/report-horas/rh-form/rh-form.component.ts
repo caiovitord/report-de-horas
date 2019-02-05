@@ -144,9 +144,7 @@ export class RhFormComponent implements OnInit {
 
   }
 
-  onSubmit() {
-
-  }
+  
 
   impedirValoresNegativos() {
     this.formulario.get('horasTrabalhadas').valueChanges

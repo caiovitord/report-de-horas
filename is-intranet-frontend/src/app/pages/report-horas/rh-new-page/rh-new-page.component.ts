@@ -9,11 +9,11 @@ import { RhFormComponent } from '../rh-form/rh-form.component';
 import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
-  selector: 'app-rh-pagina',
-  templateUrl: './rh-page.component.html',
-  styleUrls: ['./rh-page.component.css']
+  selector: 'app-rh-new-page',
+  templateUrl: './rh-new-page.component.html',
+  styleUrls: ['./rh-new-page.component.css']
 })
-export class RhPageComponent implements OnInit, AfterViewInit {
+export class RhNewPageComponent implements OnInit, AfterViewInit {
 
 
 

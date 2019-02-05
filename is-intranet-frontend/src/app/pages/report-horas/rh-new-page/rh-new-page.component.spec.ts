@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RhPageComponent } from './rh-page.component';
+import { RhNewPageComponent } from './rh-new-page.component';
 
 describe('RhPaginaComponent', () => {
-  let component: RhPageComponent;
-  let fixture: ComponentFixture<RhPageComponent>;
+  let component: RhNewPageComponent;
+  let fixture: ComponentFixture<RhNewPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RhPageComponent ]
+      declarations: [ RhNewPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RhPageComponent);
+    fixture = TestBed.createComponent(RhNewPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
