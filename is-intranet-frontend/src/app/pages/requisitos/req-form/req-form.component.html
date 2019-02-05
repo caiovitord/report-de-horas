@@ -1,0 +1,64 @@
+<form [formGroup]="formulario">
+
+    <!--INPUT---TITLE-->
+    <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('title') }">
+        <label for="title">Título</label>
+        <input class="form-control" id="title" type="text" formControlName="title" placeholder="Nome do requisito.">
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('title') ? 'none' : 'block'">
+            Crie um título autoexplicativo.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('title')" msgErro="O título é obrigatório."></app-error-msg>
+    </div>
+
+
+    <!--INPUT---CODE-->
+    <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('code') }">
+        <label for="code">Código</label>
+        <input class="form-control" id="code" type="text" formControlName="code" placeholder="">
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('code') ? 'none' : 'block'">
+            Não se esqueça de seguir o padrão de código.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('code')" msgErro="Criar um código é obrigatório."></app-error-msg>
+    </div>
+
+
+
+    <!--INPUT---DESCRIPTION-->
+    <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('description') }">
+        <label for="description">Descrição</label>
+        <input class="form-control" id="description" type="text" formControlName="description" placeholder="Descreva a funcionalidade que este requisito solicita.">
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('description') ? 'none' : 'block'">
+            Seja detalhista na descrição do requisito.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('description')" msgErro="Descrever o requisito é obrigatório."></app-error-msg>
+    </div>
+
+
+
+
+    <!--INPUT---AREA-->
+    <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('area') }">
+        <label for="area" class="control-label">Front/Back</label>
+        <select class="form-control" formControlName="area">
+            <option *ngFor="let area of areas " [ngValue]="area.name">{{ area.name }}</option>
+        </select>
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('area') ? 'none' : 'block'">
+            Selecione a área para o requisito.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('area')" msgErro="Escolher a área é obrigatório."></app-error-msg>
+    </div>
+
+
+
+    <!--INPUT---STORY-POINTS-->
+    <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('storypoints') }">
+        <label for="storypoints">StoryPoints</label>
+        <input class="form-control" id="storypoints" type="number" step="0.5" formControlName="storypoints" placeholder="Quantidade de pontos">
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('storypoints') ? 'none' : 'block'">
+            Insira a quantidade de StoryPoints planejada para o requisito.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('storypoints')" msgErro="Quantidade de StoryPoints inválida."></app-error-msg>
+    </div>
+
+
+</form>

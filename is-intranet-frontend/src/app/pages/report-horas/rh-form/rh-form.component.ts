@@ -79,7 +79,7 @@ export class RhFormComponent implements OnInit {
         horasTrabalhadas: [null, [Validators.required, Validators.min(0.1)]],
         diaTrabalho: [null, [Validators.required]],
         conclusao: [null, [Validators.required, Validators.min(10), Validators.minLength(2), Validators.maxLength(3), Validators.max(100)]],
-        observacao: [null, ]
+        observacao: [null, []]
       });
 
 
@@ -102,7 +102,6 @@ export class RhFormComponent implements OnInit {
 
   verifyValidTouched(nomeCampo) {
     const formControl  = this.formulario.get(nomeCampo);
-
     return formControl.touched && formControl.invalid;
   }
 
@@ -144,7 +143,6 @@ export class RhFormComponent implements OnInit {
 
   }
 
-  
 
   impedirValoresNegativos() {
     this.formulario.get('horasTrabalhadas').valueChanges

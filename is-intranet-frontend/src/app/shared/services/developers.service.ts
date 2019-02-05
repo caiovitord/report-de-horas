@@ -21,8 +21,8 @@ export class DevelopersService {
 
   getArea() {
     return [
-      {nome: 'Back-end'},
-      {nome: 'Front-end'}
+      {name: 'Back-end'},
+      {name: 'Front-end'}
     ];
   }
 

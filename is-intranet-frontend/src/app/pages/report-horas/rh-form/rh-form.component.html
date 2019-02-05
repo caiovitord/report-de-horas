@@ -49,7 +49,7 @@
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('area') }">
                         <label for="area" class="control-label">Front/Back</label>
                         <select class="form-control" formControlName="area">
-                            <option *ngFor="let area of area " [ngValue]="area.nome">{{ area.nome }}</option>
+                            <option *ngFor="let area of area " [ngValue]="area.name">{{ area.name }}</option>
                         </select>
                         <small class="form-text text-muted" [style.display]=" verifyValidTouched('area') ? 'none' : 'block'">
                             Selecione a área para o requisito.
