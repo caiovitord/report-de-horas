@@ -1,34 +1,26 @@
-<div class="panel panel-default"  [@fadeInOut]="destruir ? 'fadeOut' : 'fadeIn'">
-        <div class="panel-heading">Formulário 
-            <app-btn-remove-requisite [rhFormComponent]="this"></app-btn-remove-requisite>
-        </div>
+<div class="panel panel-default" [@fadeInOut]="destruir ? 'fadeOut' : 'fadeIn'">
+    <div class="panel-heading">Formulário
+        <app-btn-remove-requisite [rhFormComponent]="this"></app-btn-remove-requisite>
+    </div>
 
     <div class="panel-body">
-        <form [formGroup]="formulario" >
+        <form [formGroup]="formulario">
             <div class="form-group row">
                 <div class="col-sm-6">
-                    
-                    
+                    <!--INPUT---DESENVOLVEDOR-->
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('desenvolvedor') }">
                         <label for="desenvolvedor" class="control-label">Desenvolvedor</label>
-                        
                         <ng-select [items]="desenvolvedores$ | async" bindLabel="name" bindValue="id" [virtualScroll]="true"
                             formControlName="desenvolvedor">
                         </ng-select>
-                       
-                        <!--select class="form-control" formControlName="desenvolvedor">
-                            <option *ngFor="let dev of desenvolvedores" [ngValue]="dev.nome">{{ dev.nome }}</option>
-                        </select-->
-
                         <small class="form-text text-muted" [style.display]=" verifyValidTouched('desenvolvedor') ? 'none' : 'block'">
                             Selecione o desenvolvedor para o requisito.
                         </small>
                         <app-error-msg [mostrarErro]="verifyValidTouched('desenvolvedor')" msgErro="O desenvolvedor é obrigatório."></app-error-msg>
                     </div>
-
-
                 </div>
 
+                <!--INPUT--REQUISITO-->
                 <div class="col-sm-6">
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('requisito') }">
                         <label for="requisito">Requisito</label>
@@ -42,9 +34,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group row">
 
+                <!--INPUT---AREA-->
                 <div class="col-sm-3">
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('area') }">
                         <label for="area" class="control-label">Front/Back</label>
@@ -58,6 +50,7 @@
                     </div>
                 </div>
 
+                <!--INPUT---HORAS-TRABALHADAS-->
                 <div class="col-sm-3">
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('horasTrabalhadas') }">
                         <label for="horasTrabalhadas">Horas trabalhadas</label>
@@ -73,6 +66,7 @@
                     </div>
                 </div>
 
+                <!--INPUT---DIA-DE-TRABALHO-->
                 <div class="col-sm-3">
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('diaTrabalho') }">
                         <label for="diaTrabalho">Dia trabalhado</label>
@@ -85,6 +79,7 @@
                     </div>
                 </div>
 
+                <!--INPUT---PORCENTAGEM-CONCLUSAO-->
                 <div class="col-sm-3">
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('conclusao') }">
                         <label for="conclusao">Porcentagem de conclusão</label>
