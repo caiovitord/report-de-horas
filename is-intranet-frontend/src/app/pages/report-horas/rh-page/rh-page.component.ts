@@ -31,7 +31,7 @@ export class RhPageComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    this.pageHeaderService.title = 'Report de Horas';
+    this.pageHeaderService.title = 'Novo Report de Horas';
     this.pageHeaderService.upperLevel = 'Home';
     this.pageHeaderService.description = 'Insira as horas trabalhadas por requisito';
 

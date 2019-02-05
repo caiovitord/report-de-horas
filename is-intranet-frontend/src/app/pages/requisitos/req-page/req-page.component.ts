@@ -1,3 +1,4 @@
+import { PageHeaderService } from './../../../layout/container/page-header/page-header.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReqPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pageHeaderService: PageHeaderService) { }
 
   ngOnInit() {
+    this.pageHeaderService.title = 'Novo Requisito';
+    this.pageHeaderService.upperLevel = 'Home';
+    this.pageHeaderService.description = 'Insira as informações para criar um requisito';
   }
 
 }

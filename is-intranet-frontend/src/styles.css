@@ -54,6 +54,20 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     border-color: #dc3545;
 }
 
+.form-control{
+    border-radius: 4px;
+    height: 36px;
+}
+.panel-body{
+   background : #f9f9f9;
+}
+.panel-heading {
+    height: 53px;
+    padding: 15px 15px;
+}
+
+
+
 /* APPLICATION CSS IMPORTS */
 @import url("./../node_modules/bootstrap/dist/css/bootstrap.css");
 @import url("./../node_modules/font-awesome/css/font-awesome.css");
