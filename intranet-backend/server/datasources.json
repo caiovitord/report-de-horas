@@ -2,5 +2,15 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "postgree_db_datasource": {
+    "host": "localhost",
+    "port": 5432,
+    "url": "postgres://postgres:root@localhost:5432/is_intranet_db",
+    "database": "is_intranet_db",
+    "password": "root",
+    "name": "postgree_db_datasource",
+    "user": "postgres",
+    "connector": "postgresql"
   }
 }
