@@ -14,41 +14,41 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "postgree_db_datasource"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "postgree_db_datasource",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "postgree_db_datasource",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "postgree_db_datasource",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "postgree_db_datasource",
     "public": false
   },
   "Developer": {
-    "dataSource": "db",
+    "dataSource": "postgree_db_datasource",
     "public": true
   },
   "HourReport": {
-    "dataSource": "db",
+    "dataSource": "postgree_db_datasource",
     "public": true
   },
   "Requisite": {
-    "dataSource": "db",
+    "dataSource": "postgree_db_datasource",
     "public": true
   },
   "Sprint": {
-    "dataSource": "db",
+    "dataSource": "postgree_db_datasource",
     "public": true
   }
 }
