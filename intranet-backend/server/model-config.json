@@ -35,19 +35,19 @@
     "dataSource": "db",
     "public": false
   },
-  "developer": {
+  "Developer": {
     "dataSource": "db",
     "public": true
   },
-  "hour-report": {
+  "HourReport": {
     "dataSource": "db",
     "public": true
   },
-  "requisite": {
+  "Requisite": {
     "dataSource": "db",
     "public": true
   },
-  "sprint": {
+  "Sprint": {
     "dataSource": "db",
     "public": true
   }

@@ -1,5 +1,5 @@
 {
-  "name": "sprint",
+  "name": "Sprint",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
