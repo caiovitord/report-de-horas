@@ -1,5 +1,5 @@
 {
-  "name": "HourReport",
+  "name": "hour-report",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

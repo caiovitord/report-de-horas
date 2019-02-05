@@ -1,5 +1,5 @@
 {
-  "name": "Requisite",
+  "name": "requisite",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
