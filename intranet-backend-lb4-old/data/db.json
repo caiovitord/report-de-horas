@@ -1,0 +1,11 @@
+{
+  "ids": {
+    "Developer": 3
+  },
+  "models": {
+    "Developer": {
+      "1": "{\"id\":1,\"name\":\"Caio Vitor Gobira Damasceno\",\"email\":\"caiovitor.gobira@gmail.com\",\"password\":\"mpass\",\"hourReports\":{\"id\":1}}",
+      "2": "{\"id\":2,\"name\":\"Nomee\",\"email\":\"email\",\"password\":\"pass\"}"
+    }
+  }
+}
