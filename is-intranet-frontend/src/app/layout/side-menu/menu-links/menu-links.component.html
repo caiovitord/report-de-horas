@@ -19,15 +19,27 @@
         </ul>
       </li-->
       
-      <li class="treeview" (click)="toggle()" [routerLinkActive]="['open', 'menu-open']">
+      <li class="treeview" (click)="toggle(0)" [routerLinkActive]="['open', 'menu-open']">
         <a href="#">
           <i class="fa fa-book"></i> <span>Report de Horas</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        <ul class="treeview-menu"   [class.disp-block]="isOpen" [class.disp-none]="!isOpen">
-          <li><a [routerLink]="['/']" ><i class="fa fa-circle-o"></i> Formulário</a></li>
+        <ul class="treeview-menu"   [class.disp-block]="isOpen_f(0)" [class.disp-none]="!isOpen_f(0)">
+          <li><a [routerLink]="['/']" ><i class="fa fa-circle-o"></i> Iserir novo</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview" (click)="toggle(1)" [routerLinkActive]="['open', 'menu-open']">
+        <a href="#">
+          <i class="fa fa-book"></i> <span>Requisitos</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu"   [class.disp-block]="isOpen_f(1)" [class.disp-none]="!isOpen_f(1)">
+          <li><a [routerLink]="['/requisitos']" ><i class="fa fa-circle-o"></i> Inserir requisito</a></li>
         </ul>
       </li>
 

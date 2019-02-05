@@ -9,14 +9,20 @@ export class MenuLinksComponent implements OnInit {
 
   constructor() { }
 
-  isOpen = true;
+  isOpen: boolean[] = [true, false];
 
-  toggle() {
-    this.isOpen = !this.isOpen;
-
+  toggle(index) {
+    this.isOpen[index] = !this.isOpen[index];
+    for (let i = 0; i < this.isOpen.length; i++) {
+      if ( i !== index) {
+        this.isOpen[i] = false;
+      }
+    }
   }
 
   ngOnInit() {
   }
+
+  isOpen_f(index) {return this.isOpen[index]; }
 
 }

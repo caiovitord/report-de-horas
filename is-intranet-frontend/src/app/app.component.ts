@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgSelectConfig } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'report-de-horas';
+
+  constructor(private config: NgSelectConfig) {
+    this.config.notFoundText = 'Não existem itens cadastrados';
+  }
 }

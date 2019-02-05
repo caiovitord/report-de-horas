@@ -1,24 +1,28 @@
+import { EndPoints } from './../../../shared/endpoints';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Http } from '@angular/http';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DevelopersService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
-  getCargos() {
-    return [
-      {nome: 'Dev 1'},
-      {nome: 'Dev 2'},
-      {nome: 'Dev 3'}
-    ];
+  getDevelopers() {
+    return this.http.get(EndPoints.DEVELOPERS)
+    .pipe(
+      map(dado => dado.json() )
+    );
   }
 
   getArea() {
     return [
-      {nome: 'Beck'},
-      {nome: 'Front'}
+      {nome: 'Back-end'},
+      {nome: 'Front-end'}
     ];
   }
 

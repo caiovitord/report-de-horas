@@ -1,5 +1,7 @@
 .disp-block{
+    opacity: 1!important;
     display: block;
+    transition-duration: 0.2s;
 }
 .disp-none{
     opacity: 0!important;

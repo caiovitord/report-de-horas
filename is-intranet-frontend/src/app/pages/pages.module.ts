@@ -4,14 +4,15 @@ import { CommonModule } from '@angular/common';
 
 import { ReportHorasModule } from './report-horas/report-horas.module';
 import { SharedModule } from '../shared/shared.module';
+import { RequisitosModule } from './requisitos/requisitos.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     ReportHorasModule,
-    SharedModule
-
+    SharedModule,
+    RequisitosModule
   ],
   declarations: []
 

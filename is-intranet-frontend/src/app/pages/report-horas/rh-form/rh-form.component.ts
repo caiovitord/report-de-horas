@@ -48,7 +48,7 @@ export class RhFormComponent implements OnInit {
 
   requisitos$: Observable<any>;
 
-  desenvolvedores: any;
+  desenvolvedores$: any;
   area: any;
 
   public destruir  = false;
@@ -69,7 +69,7 @@ export class RhFormComponent implements OnInit {
     this.formNumber = this.qtdFormsService.quantidadeDeFormularios;
 
     this.requisitos$ = this.requisitoService.getRequisitos();
-    this.desenvolvedores = this.devService.getCargos();
+    this.desenvolvedores$ = this.devService.getDevelopers();
     this.area = this.devService.getArea();
 
       this.formulario = this.formBuilder.group({

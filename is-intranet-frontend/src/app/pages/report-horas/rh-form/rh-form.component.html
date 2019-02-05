@@ -7,16 +7,25 @@
         <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
             <div class="form-group row">
                 <div class="col-sm-6">
+                    
+                    
                     <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('desenvolvedor') }">
                         <label for="desenvolvedor" class="control-label">Desenvolvedor</label>
-                        <select class="form-control" formControlName="desenvolvedor">
+                        
+                        <ng-select [items]="desenvolvedores$ | async" bindLabel="name" bindValue="id" [virtualScroll]="true"
+                            formControlName="desenvolvedor">
+                        </ng-select>
+                       
+                        <!--select class="form-control" formControlName="desenvolvedor">
                             <option *ngFor="let dev of desenvolvedores" [ngValue]="dev.nome">{{ dev.nome }}</option>
-                        </select>
+                        </select-->
                         <small class="form-text text-muted" [style.display]=" verifyValidTouched('desenvolvedor') ? 'none' : 'block'">
                             Selecione o desenvolvedor para o requisito.
                         </small>
                         <app-error-msg [mostrarErro]="verifyValidTouched('desenvolvedor')" msgErro="O desenvolvedor é obrigatório."></app-error-msg>
                     </div>
+
+
                 </div>
 
                 <div class="col-sm-6">
