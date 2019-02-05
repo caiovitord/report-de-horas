@@ -34,5 +34,21 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Developer": {
+    "dataSource": "db",
+    "public": true
+  },
+  "HourReport": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Requisite": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Sprint": {
+    "dataSource": "db",
+    "public": true
   }
 }

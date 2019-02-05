@@ -1,0 +1,54 @@
+{
+  "name": "Requisite",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "area": {
+      "type": "number",
+      "required": true
+    },
+    "storypoints": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "hourReports": {
+      "type": "hasAndBelongsToMany",
+      "model": "HourReport",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "sprints": {
+      "type": "hasAndBelongsToMany",
+      "model": "Sprint",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
