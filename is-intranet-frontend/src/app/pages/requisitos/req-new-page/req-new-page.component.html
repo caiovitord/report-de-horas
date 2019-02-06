@@ -1,8 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">Formulário</div>
   <div class="panel-body">
-    <app-req-form></app-req-form>
+    <app-req-form #formComponent></app-req-form>
   </div>
 </div>
-
-<button type="button"  class="btn btn-primary">Inserir via CSV</button>
+<app-server-response sucessMessage="Requisito inserido!" ></app-server-response>
+<br>
+<button type="submit" (click)="onTrySubmit()" class="btn btn-primary">Inserir novo</button>
+<br><br>
+<button type="button"  class="btn btn-primary">Inserir vários via CSV</button>

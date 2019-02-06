@@ -22,7 +22,7 @@
       "required": true
     },
     "area": {
-      "type": "number",
+      "type": "string",
       "required": true
     },
     "storypoints": {

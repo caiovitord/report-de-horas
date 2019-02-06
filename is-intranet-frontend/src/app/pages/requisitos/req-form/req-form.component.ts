@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { DevelopersService } from './../../../shared/services/developers.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-req-form',
@@ -27,13 +28,25 @@ export class ReqFormComponent implements OnInit {
       title: [null, [Validators.required, Validators.minLength(10)]],
       description: [null, [Validators.required, Validators.minLength(10)]],
       area: [null, [Validators.required]],
-      storypoints:  [null, [Validators.required, Validators.min(0), Validators.max(144)]],
+      storypoints: [null, [Validators.required, Validators.min(0), Validators.max(144)]],
     });
+
+
+    this.noNegativeValue();
+  }
+  noNegativeValue() {
+    this.formulario.get('storypoints').valueChanges
+      .pipe(
+        map(valor => {
+          if (valor < 0) {
+            this.formulario.get('storypoints').setValue(0);
+          }
+        })).subscribe();
   }
 
 
   verifyValidTouched(nomeCampo) {
-    const formControl  = this.formulario.get(nomeCampo);
+    const formControl = this.formulario.get(nomeCampo);
     return formControl.touched && formControl.invalid;
   }
 

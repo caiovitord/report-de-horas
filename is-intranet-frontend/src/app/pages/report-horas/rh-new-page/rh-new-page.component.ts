@@ -71,13 +71,13 @@ export class RhNewPageComponent implements OnInit, AfterViewInit {
 
       this.addRequisitesFormService.formComponents.forEach(cada => {
         Object.keys(cada.formulario.controls).forEach(campo => {
-//          console.log(campo);
+          //          console.log(campo);
           const controle = cada.formulario.get(campo);
-         controle.markAsTouched();
+          controle.markAsTouched();
 
         });
 
       });
-  }
+    }
   }
 }

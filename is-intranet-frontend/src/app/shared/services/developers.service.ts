@@ -1,4 +1,4 @@
-import { EndPoints } from '../endpoints';
+import { EndPoints } from '../EndPoints';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Http } from '@angular/http';
@@ -15,7 +15,7 @@ export class DevelopersService {
   getDevelopers() {
     return this.http.get(EndPoints.DEVELOPERS)
     .pipe(
-      map(dado => dado.json() )
+      map(dado => dado.json())
     );
   }
 
