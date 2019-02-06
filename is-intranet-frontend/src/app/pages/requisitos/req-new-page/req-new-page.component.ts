@@ -23,11 +23,14 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
+  showCsvTable = false;
+  tableRequisites;
+
   constructor(
     private pageHeaderService: PageHeaderService,
     private requisiteService: RequisitesService,
     private serverResponseService: ServerResponseService
-    ) { }
+  ) { }
 
 
   ngOnInit() {
@@ -36,10 +39,10 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
     this.pageHeaderService.description = 'Insira as informações para criar um requisito';
 
     this.subscription = this.serverResponseService.responseEventEmitter
-    .pipe(
-      map(res => this.processResponse(res))
-    )
-    .subscribe();
+      .pipe(
+        map(res => this.processResponse(res))
+      )
+      .subscribe();
   }
 
 
@@ -72,5 +75,38 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
   }
 
 
-  
+
+  fileUpload(files) {
+    const file: File = files.item(0);
+    const fileReader = new FileReader();
+    fileReader.readAsText(file);
+    fileReader.onload = () => {
+      this.tableRequisites = this.csvStringToJsonObject(fileReader.result);
+
+      console.log(this.tableRequisites);
+
+      this.showCsvTable = true;
+
+    };
+  }
+
+
+  csvStringToJsonObject(csvString) {
+    const lines = csvString.split('\n');
+    const result = [];
+    const headers = lines[0].split(',');
+
+    for (let i = 1; i < lines.length; i++) {
+      const obj = {};
+      const currentline = lines[i].split(',');
+
+      for (let j = 0; j < headers.length; j++) {
+        obj[headers[j]] = currentline[j];
+      }
+      result.push(obj);
+    }
+    result.pop(); // Remove a ultima linha indesejada
+    return result;
+  }
+
 }

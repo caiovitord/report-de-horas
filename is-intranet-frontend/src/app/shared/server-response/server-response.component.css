@@ -6,6 +6,12 @@
     width: fit-content;
     z-index: -1!important;
 }
+
+.go-away{
+  position: absolute!important;
+  top: -10000px;
+}
+
 .marginl{
   margin-left:10px!important;
 }

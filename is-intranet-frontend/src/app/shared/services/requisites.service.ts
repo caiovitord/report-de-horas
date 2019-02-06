@@ -11,18 +11,18 @@ import { map, delay, timeout, catchError } from 'rxjs/operators';
 })
 
 export class RequisitesService {
- 
+
 
   constructor(
     private http: Http,
     private serverResponseService: ServerResponseService
-    ) { }
+  ) { }
 
   getAllRequisites(): Observable<any> {
     return this.http.get(EndPoints.REQUISITES)
-    .pipe(
-      map(dado => dado.json())
-    );
+      .pipe(
+        map(dado => dado.json())
+      );
   }
 
 
@@ -31,29 +31,48 @@ export class RequisitesService {
 
 
     this.http.post(EndPoints.REQUISITES, values)
-    .pipe(
-      delay(200),
-      timeout(2000),
-      catchError(e => {
-        this.responseProcessing(e);
-        return null;
-      }),
-      map(response => this.responseProcessing(response))
-    ).subscribe();
+      .pipe(
+        delay(200),
+        timeout(2000),
+        catchError(e => {
+          this.responseProcessing(e);
+          return null;
+        }),
+        map(response => this.responseProcessing(response))
+      ).subscribe();
   }
 
   getRequisiteById(id: number): any {
     return this.http.get(EndPoints.REQUISITES + '/' + id)
-    .pipe(
-      map(dado => dado.json())
-    );
+      .pipe(
+        map(dado => dado.json())
+      );
   }
 
   editRequisite(values: any): any {
     this.serverResponseService.startResponse();
 
     this.http.put(EndPoints.REQUISITES, values)
-    .pipe(
+      .pipe(
+        delay(200),
+        timeout(2000),
+        catchError(e => {
+          this.responseProcessing(e);
+          return null;
+        }),
+        map(response => this.responseProcessing(response))
+      ).subscribe();
+  }
+
+  responseProcessing(response) {
+    this.serverResponseService.setResponse(response);
+  }
+
+
+  deleteRequisite(requisiteBeingDeleted) {
+    this.serverResponseService.startResponse();
+
+    this.http.delete(EndPoints.REQUISITES + '/' + requisiteBeingDeleted.id).pipe(
       delay(200),
       timeout(2000),
       catchError(e => {
@@ -62,10 +81,6 @@ export class RequisitesService {
       }),
       map(response => this.responseProcessing(response))
     ).subscribe();
-  }
-
-  responseProcessing(response) {
-    this.serverResponseService.setResponse(response);
   }
 
 

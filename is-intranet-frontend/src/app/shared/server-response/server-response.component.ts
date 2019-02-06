@@ -62,6 +62,7 @@ export class ServerResponseComponent implements OnInit, OnDestroy {
 
   show = false;
   showOkIcon = false;
+  goAway = true;
 
   message = 'Aguarde...';
 
@@ -105,6 +106,7 @@ export class ServerResponseComponent implements OnInit, OnDestroy {
   }
   startWaitingResponse(): any {
     this.show = true;
+    this.goAway = false;
   }
 
   async delay(ms: number) {
@@ -114,9 +116,10 @@ export class ServerResponseComponent implements OnInit, OnDestroy {
   async reset() {
     await this.delay(2000);
     this.show = false;
-    await this.delay(300);
+    await this.delay(400);
     this.error = false;
     this.showOkIcon = false;
+    this.goAway = true;
   }
 
   ngOnDestroy(): void {

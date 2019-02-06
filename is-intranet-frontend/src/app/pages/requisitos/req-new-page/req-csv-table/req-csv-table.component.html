@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <table class="table">
+    <!--TABLE HEADER-->
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Código</th>
+        <th>Título</th>
+        <th>Área</th>
+        <th>StoryPoints</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor="let req of requisites; index as i">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{req.code}}</td>
+        <td>{{req.title}}</td>
+        <td>{{req.area}}</td>
+        <td style="padding-left: 30px;">{{req.storypoints}}</td>
+
+        <td>
+          <div class="app-tooltip"> {{minimize(req.description)}}
+            <span class="app-tooltiptext tooltip-top">{{req.description}}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

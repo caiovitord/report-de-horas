@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { TestesModule } from '../../testes/testes.module';
 import { ReqListComponent } from './req-list/req-list.component';
 import { ReqEditComponent } from './req-edit/req-edit.component';
+import { ReqCsvTableComponent } from './req-new-page/req-csv-table/req-csv-table.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ReqEditComponent } from './req-edit/req-edit.component';
     ReqNewPageComponent,
     ReqFormComponent,
     ReqListComponent,
-    ReqEditComponent
+    ReqEditComponent,
+    ReqCsvTableComponent
   ]
 })
 export class RequisitosModule { }
