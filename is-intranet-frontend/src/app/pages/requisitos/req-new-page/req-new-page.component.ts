@@ -1,3 +1,4 @@
+import { ServerResponseComponent } from './../../../shared/server-response/server-response.component';
 import { Subscription } from 'rxjs';
 import { ServerResponseService } from './../../../shared/services/server-response.service';
 import { RequisitesService } from './../../../shared/services/requisites.service';
@@ -5,6 +6,7 @@ import { PageHeaderService } from '../../../layout/container/page-header/page-he
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormDebugComponent } from 'src/app/testes/form-debug/form-debug.component';
 import { ReqFormComponent } from '../req-form/req-form.component';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-req-new-page',
@@ -16,6 +18,8 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
 
 
   @ViewChild('formComponent') formComponent: ReqFormComponent;
+  @ViewChild('serverReponseComponent') serverReponseComponent: ServerResponseComponent;
+
 
   subscription: Subscription;
 
@@ -31,8 +35,13 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
     this.pageHeaderService.upperLevel = 'Home';
     this.pageHeaderService.description = 'Insira as informações para criar um requisito';
 
-    this.subscription = this.serverResponseService.responseEventEmitter.subscribe();
+    this.subscription = this.serverResponseService.responseEventEmitter
+    .pipe(
+      map(res => this.processResponse(res))
+    )
+    .subscribe();
   }
+
 
 
   onTrySubmit() {
@@ -51,7 +60,14 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
     this.requisiteService.addNewRequisite(values);
   }
 
+  processResponse(res: any) {
+    if (res.status && res.status === 200) {
+      this.formComponent.formulario.reset();
+      this.serverReponseComponent.reset();
+    }
+  }
+
   ngOnDestroy(): void {
-    
+    this.subscription.unsubscribe();
   }
 }

@@ -9,7 +9,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import { map } from 'rxjs/operators';
+import { map, delay } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 
@@ -55,6 +55,7 @@ import { Subscription } from 'rxjs';
   ]
 })
 export class ServerResponseComponent implements OnInit, OnDestroy {
+
 
   @ViewChild('messageDiv') messageDiv: ElementRef;
   @Input() sucessMessage: string;
@@ -106,10 +107,20 @@ export class ServerResponseComponent implements OnInit, OnDestroy {
     this.show = true;
   }
 
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  async reset() {
+    await this.delay(2000);
+    this.show = false;
+    await this.delay(300);
+    this.error = false;
+    this.showOkIcon = false;
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
-
 
 }

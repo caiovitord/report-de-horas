@@ -46,4 +46,13 @@ export class RequisitesService {
   responseProcessing(response) {
     this.serverResponseService.setResponse(response);
   }
+
+
+  getAllRequisites() {
+    this.http.get(EndPoints.REQUISITES)
+    .pipe(
+
+      map(response => this.responseProcessing(response))
+    ).subscribe();
+  }
 }

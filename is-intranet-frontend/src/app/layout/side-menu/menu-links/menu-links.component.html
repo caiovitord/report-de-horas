@@ -39,7 +39,10 @@
           </span>
         </a>
         <ul class="treeview-menu"   [class.disp-block]="isOpen_f(1)" [class.disp-none]="!isOpen_f(1)">
-          <li><a [routerLink]="['/requisitos']" ><i class="fa fa-circle-o"></i> Novo</a></li>
+          <li><a [routerLink]="['/requisitos-new']" ><i class="fa fa-circle-o"></i> Novo</a></li>
+        </ul>
+        <ul class="treeview-menu"   [class.disp-block]="isOpen_f(1)" [class.disp-none]="!isOpen_f(1)">
+          <li><a [routerLink]="['/requisitos-list']" ><i class="fa fa-circle-o"></i> Lista</a></li>
         </ul>
       </li>
 

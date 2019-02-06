@@ -5,6 +5,7 @@ import { ReqFormComponent } from './req-form/req-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { TestesModule } from '../../testes/testes.module';
+import { ReqListComponent } from './req-list/req-list.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { TestesModule } from '../../testes/testes.module';
   ],
   declarations: [
     ReqNewPageComponent,
-    ReqFormComponent
+    ReqFormComponent,
+    ReqListComponent
   ]
 })
 export class RequisitosModule { }
