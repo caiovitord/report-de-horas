@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Formulário</div>
+  <div class="panel-body">
+    <app-req-form #formComponent></app-req-form>
+  </div>
+</div>
+
+<app-server-response #serverReponseComponent sucessMessage="Requisito alterado!"></app-server-response>
+<br><br>
+<button type="submit" (click)="onTrySubmitEdit()" class="btn btn-primary">Salvar edição</button>

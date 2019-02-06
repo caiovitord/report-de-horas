@@ -68,7 +68,7 @@ export class RhFormComponent implements OnInit {
 
     this.formNumber = this.qtdFormsService.quantidadeDeFormularios;
 
-    this.requisitos$ = this.requisitoService.getRequisitos();
+    this.requisitos$ = this.requisitoService.getAllRequisites();
     this.desenvolvedores$ = this.devService.getDevelopers();
     this.area = this.devService.getArea();
 

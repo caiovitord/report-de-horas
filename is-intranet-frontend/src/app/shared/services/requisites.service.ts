@@ -11,16 +11,17 @@ import { map, delay, timeout, catchError } from 'rxjs/operators';
 })
 
 export class RequisitesService {
+ 
 
   constructor(
     private http: Http,
     private serverResponseService: ServerResponseService
     ) { }
 
-  getRequisitos(): Observable<any> {
+  getAllRequisites(): Observable<any> {
     return this.http.get(EndPoints.REQUISITES)
     .pipe(
-      map(dado => dado.json() )
+      map(dado => dado.json())
     );
   }
 
@@ -28,7 +29,28 @@ export class RequisitesService {
   addNewRequisite(values) {
     this.serverResponseService.startResponse();
 
-    console.log(values);
+
+    this.http.post(EndPoints.REQUISITES, values)
+    .pipe(
+      delay(200),
+      timeout(2000),
+      catchError(e => {
+        this.responseProcessing(e);
+        return null;
+      }),
+      map(response => this.responseProcessing(response))
+    ).subscribe();
+  }
+
+  getRequisiteById(id: number): any {
+    return this.http.get(EndPoints.REQUISITES + '/' + id)
+    .pipe(
+      map(dado => dado.json())
+    );
+  }
+
+  editRequisite(values: any): any {
+    this.serverResponseService.startResponse();
 
     this.http.put(EndPoints.REQUISITES, values)
     .pipe(
@@ -42,17 +64,9 @@ export class RequisitesService {
     ).subscribe();
   }
 
-
   responseProcessing(response) {
     this.serverResponseService.setResponse(response);
   }
 
 
-  getAllRequisites() {
-    this.http.get(EndPoints.REQUISITES)
-    .pipe(
-
-      map(response => this.responseProcessing(response))
-    ).subscribe();
-  }
 }
