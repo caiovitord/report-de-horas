@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { ServerResponseService } from './../../../shared/services/server-response.service';
 import { RequisitesService } from './../../../shared/services/requisites.service';
 import { PageHeaderService } from '../../../layout/container/page-header/page-header.service';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, ElementRef } from '@angular/core';
 import { FormDebugComponent } from 'src/app/testes/form-debug/form-debug.component';
 import { ReqFormComponent } from '../req-form/req-form.component';
 import { map } from 'rxjs/operators';
@@ -74,6 +74,11 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+
+  onUploadButtonClicked() {
+    
+    
+  }
 
 
   fileUpload(files) {

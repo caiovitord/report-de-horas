@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'report-de-horas';
 
   constructor(private config: NgSelectConfig) {
-    this.config.notFoundText = 'Não existem itens cadastrados';
+    this.config.notFoundText = 'Não foi encontrado nenhum item';
   }
 }

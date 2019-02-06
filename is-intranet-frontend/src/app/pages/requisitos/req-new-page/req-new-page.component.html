@@ -9,11 +9,12 @@
 <button type="submit" (click)="onTrySubmit()" class="btn btn-primary">Inserir novo</button>
 <br><br>
 
-<input id="file-upload" type="file" accept=".csv" (change)="fileUpload($event.srcElement.files)">
 
-<button href="#myModal" data-toggle="modal" type="button" class="btn btn-primary">Inserir vários via CSV</button>
+<button href="#myModal" data-toggle="modal" type="button" (click)="onUploadButtonClicked()" class="btn btn-primary">Inserir vários via CSV</button>
+
+<input #fileInput id="fileInput"  type="file" accept=".csv" (change)="fileUpload($event.srcElement.files)" style="visibility: hidden;">
 
 <app-modal-alert title="Atenção no modelo" smallInfo="Todas as informações devem ter valores NÃO NULOS." info="É crucial que o seu CSV tenha as seguintes colunas para inserir o requisito: title, code, description, area, storypoints. "
   confirmButtonText="Está no modelo" cancelButtonText="Não está no modelo" [component]="this"></app-modal-alert>
-
+  
 <app-req-csv-table *ngIf="showCsvTable" [requisites]="tableRequisites"></app-req-csv-table>
