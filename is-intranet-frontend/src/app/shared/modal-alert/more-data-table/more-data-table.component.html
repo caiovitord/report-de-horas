@@ -1,0 +1,26 @@
+<table class="table">
+  <!--TABLE HEADER-->
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Título</th>
+      <th>Área</th>
+      <th>SP</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let req of requisites$ | async">
+    <tr>
+      <td>{{req.code}}</td>
+      <td>{{req.title}}</td>
+      <td>{{formatArea(req.area)}}</td>
+      <td style="padding-left: 30px;">{{req.storypoints}}</td>
+      <td>
+        <div class="app-tooltip"> {{minimize(req.description)}}
+          <span class="app-tooltiptext tooltip-top">{{req.description}}</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

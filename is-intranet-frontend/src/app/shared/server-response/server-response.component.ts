@@ -81,7 +81,6 @@ export class ServerResponseComponent implements OnInit, OnDestroy {
     .subscribe();
   }
 
-
   receiveResponse(response): any {
     // console.log("Recebi resposta");
     // console.log(response);

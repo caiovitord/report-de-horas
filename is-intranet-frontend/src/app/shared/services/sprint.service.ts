@@ -1,25 +1,63 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { map, delay, timeout, catchError } from 'rxjs/operators';
-
 import { ServerResponseService } from './server-response.service';
 import { EndPoints } from '../EndPoints';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SprintService {
+ 
+
 
   constructor(private http: Http,
     private serverResponseService: ServerResponseService) { }
 
-  getSprints() {
+
+  getAllSprints(): Observable<any> {
     return this.http.get(EndPoints.SPRINT)
       .pipe(
         map(dado => dado.json())
       );
   }
 
+
+  getSprintById(id: number): any {
+    return this.http.get(EndPoints.SPRINT + '/' + id)
+      .pipe(
+        map(dado => dado.json())
+      );
+  }
+
+
+  responseProcessing(response) {
+    this.serverResponseService.setResponse(response);
+  }
+
+  deleteSprintById(id: number) {
+    this.serverResponseService.startResponse();
+
+    this.http.delete(EndPoints.SPRINT + '/' + id).pipe(
+      delay(200),
+      timeout(2000),
+      catchError(e => {
+        this.responseProcessing(e);
+        return null;
+      }),
+      map(response => this.responseProcessing(response))
+    ).subscribe();
+  }
+
+  batchResponseProcessing(response, requisiteIds) {
+    if (response.status === 200) {
+      const idNewSprint = JSON.parse(response._body).id;
+      this.addNewSprintRequisiteRelation(idNewSprint, requisiteIds);
+    } else {
+      this.serverResponseService.setResponse(response);
+    }
+  }
 
   addNewSprintWithRequisites(values) {
     this.serverResponseService.startResponse();
@@ -35,26 +73,15 @@ export class SprintService {
           this.responseProcessing(e);
           return null;
         }),
-        map(response => this.responseProcessing(response, requisiteIds))
+        map(response => this.batchResponseProcessing(response, requisiteIds))
       ).subscribe();
   }
 
-  responseProcessing(response, requisiteIds?) {
-    if (response.status === 200) {
-      //console.log(response._body);
-
-      const idNewSprint = JSON.parse(response._body).id;
-      this.addNewRequisiteRelation(idNewSprint, requisiteIds);
-    } else {
-      this.serverResponseService.setResponse(response);
-    }
-  }
-
-  addNewRequisiteRelation(idNewSprint, requisiteIds) {
+  addNewSprintRequisiteRelation(idNewSprint, requisiteIds) {
     requisiteIds.forEach(idRequisito => {
 
       const relationObject = { sprintId: idNewSprint, requisiteId: idRequisito };
-     // console.log(relationObject);
+      // console.log(relationObject);
 
       this.http.put(EndPoints.SPRINT + '/' + idNewSprint + '/requisites/rel/' + idRequisito
         , relationObject)
@@ -73,8 +100,9 @@ export class SprintService {
 
   }
 
+
   // Essa função garante que a resposta só será positiva se todas forem positivas. Não é feito nada se der erro em uma relação de requisito
-  responseProcessingAfterInsertRelation(response, idRequisito , requisiteIds) {
+  responseProcessingAfterInsertRelation(response, idRequisito, requisiteIds) {
     if (response.status !== 200) {
       this.serverResponseService.setResponse(response);
     } else {

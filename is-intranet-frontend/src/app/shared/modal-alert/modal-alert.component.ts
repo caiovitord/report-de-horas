@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+
+import { MoreDataTableComponent } from './more-data-table/more-data-table.component';
 
 @Component({
   selector: 'app-modal-alert',
@@ -15,13 +17,19 @@ export class ModalAlertComponent implements OnInit {
   @Input() confirmButtonText: string;
   @Input() cancelButtonText: string;
   @Input() component: any;
+  @Input() modalId: string;
+  @Input() callBackResolver: number;
+  @Input() showCancelButton = true;
+  @Input() showTableData = false;
+
+  @ViewChild('moreDataTableComponent') moreDataTableComponent: MoreDataTableComponent;
 
 
   ngOnInit() {
   }
 
   onConfirmModal() {
-    this.component.onConfirmModal();
+    this.component.onConfirmModal(this.callBackResolver);
   }
 
 }

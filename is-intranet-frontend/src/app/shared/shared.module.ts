@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorMsgComponent } from './error-msg/error-msg.component';
 import { ServerResponseComponent } from './server-response/server-response.component';
 import { ModalAlertComponent } from './modal-alert/modal-alert.component';
+import { MoreDataTableComponent } from './modal-alert/more-data-table/more-data-table.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { ModalAlertComponent } from './modal-alert/modal-alert.component';
   declarations: [
     ErrorMsgComponent,
     ServerResponseComponent,
-    ModalAlertComponent
+    ModalAlertComponent,
+    MoreDataTableComponent
   ],
   exports: [ErrorMsgComponent, ServerResponseComponent, ModalAlertComponent]
 })

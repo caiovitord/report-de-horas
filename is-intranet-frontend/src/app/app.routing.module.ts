@@ -8,6 +8,7 @@ import { ReqNewPageComponent } from './pages/requisitos/req-new-page/req-new-pag
 import { ReqListComponent } from './pages/requisitos/req-list/req-list.component';
 import { ReqEditComponent } from './pages/requisitos/req-edit/req-edit.component';
 import { SpNewPageComponent } from './pages/sprints/sp-new-page/sp-new-page.component';
+import { SpEditComponent } from './pages/sprints/sp-edit/sp-edit.component';
 
 const routes: Routes = [
    /* { path: 'requisitos', component: ReqPageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'requisitos-new', component: ReqNewPageComponent },
     { path: 'sprints-new', component: SpNewPageComponent },
     { path: 'sprints-list', component: SpListComponent },
+    { path: 'sprints-edit/:id', component: SpEditComponent },
     { path: 'requisitos-edit/:id', component: ReqEditComponent },
     { path: 'requisitos-list', component: ReqListComponent },
     { path: 'report-horas', component: RhNewPageComponent },

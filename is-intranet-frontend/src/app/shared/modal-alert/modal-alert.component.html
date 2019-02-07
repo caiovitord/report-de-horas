@@ -1,4 +1,4 @@
-<div id="myModal" class="modal fade">
+<div [id]="modalId" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,11 +6,12 @@
                 <h4 class="modal-title">{{title}}</h4>
             </div>
             <div class="modal-body">
+                <app-more-data-table *ngIf="showTableData" #moreDataTableComponent></app-more-data-table>
                 <p>{{info}}</p>
                 <p class="text-warning"><small>{{smallInfo}}</small></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{cancelButtonText}}</button>
+                <button *ngIf="showCancelButton" type="button" class="btn btn-default" data-dismiss="modal">{{cancelButtonText}}</button>
                 <button type="button" (click)="onConfirmModal()" data-dismiss="modal" class="btn btn-primary">{{confirmButtonText}}</button>
             </div>
         </div>

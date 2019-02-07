@@ -9,5 +9,15 @@ export class StringCommons {
         }
     }
 
+    static getDateStringFromDate(date: Date) {
+        console.log(date);
+        return date.getFullYear() + '-' + StringCommons.pad(date.getMonth(), 2) + '-' + StringCommons.pad(date.getDay(), 2);
+    }
+
+    static pad(str, size) {
+        let s: string = String(str);
+        while (s.length < size) { s = '0' + s; }
+        return s;
+    }
 
 }

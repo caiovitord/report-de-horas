@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Formulário</div>
+    <div class="panel-body">
+      <app-sp-form #formComponent></app-sp-form>
+    </div>
+  </div>
+  
+  <app-server-response #serverReponseComponent sucessMessage="Sprint alterada!"></app-server-response>
+  <br><br>
+  <button type="submit" (click)="onTrySubmitEdit()" class="btn btn-primary">Salvar edição</button>

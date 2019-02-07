@@ -3,7 +3,7 @@
 
 <div class="panel panel-default" [class.padding]="showLoading">
 
-  <app-modal-alert title="Confirme" smallInfo="Essa ação não pode ser revertida!" [info]="infoModalMessage" confirmButtonText="Deletar"
+  <app-modal-alert modalId="myModal" title="Confirme" smallInfo="Essa ação não pode ser revertida!" [info]="infoModalMessage" confirmButtonText="Deletar"
     cancelButtonText="Cancelar" [component]="this" ></app-modal-alert>
 
 
@@ -36,7 +36,7 @@
         </td>
 
         <td>
-          <span routerLink="/requisitos-edit/{{req.id}}" routerLinkActive="router-link-active" class="glyphicon glyphicon-edit app-icon "></span>
+          <span routerLink="/requisitos-edit/{{req.id}}"  class="glyphicon glyphicon-edit app-icon "></span>
           <a href="#myModal" data-toggle="modal"><span (click)="onClickDelete(req)" class=" glyphicon glyphicon-trash app-icon del-icon"></span></a>
         </td>
 

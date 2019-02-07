@@ -1,43 +1,46 @@
-
-<app-server-response #serverReponseComponent sucessMessage="Requisito deletado!"></app-server-response>
-
+<app-server-response #serverReponseComponent sucessMessage="Sprint deletada!"></app-server-response>
+<br><br>
 <div class="panel panel-default" [class.padding]="showLoading">
 
-  <app-modal-alert title="Confirme" smallInfo="Essa ação não pode ser revertida!" [info]="infoModalMessage" confirmButtonText="Deletar"
-    cancelButtonText="Cancelar" [component]="this" ></app-modal-alert>
+  <app-modal-alert #modalAlertReqComponent showTableData="true" modalId="myModalRequisite" [title]="requisiteModalTitle" smallInfo="" info=""
+    confirmButtonText="Ok"  [showCancelButton]="false" cancelButtonText="" [component]="this" [callBackResolver]="modalCallBackResolver"></app-modal-alert>
+
+
+  <app-modal-alert modalId="myModalDelete" title="Confirme" smallInfo="Essa ação não pode ser revertida!" [info]="infoModalMessage"
+    confirmButtonText="Deletar" cancelButtonText="Cancelar" [component]="this" [callBackResolver]="modalCallBackResolver"></app-modal-alert>
+
+
 
 
   <table class="table">
     <!--TABLE HEADER-->
     <thead>
       <tr>
-        <th>#</th>
-        <th>Código</th>
-        <th>Título</th>
-        <th>Área</th>
-        <th>StoryPoints</th>
-        <th>Descrição</th>
+        <th>#n.</th>
+        <th>Nome</th>
+        <th>Data de início</th>
+        <th>Data de entrega</th>
+        <th>Status</th>
+        <th>Requisitos</th>
         <th>Ações</th>
       </tr>
     </thead>
 
-    <tbody *ngFor="let req of requisites$ | async; index as i">
+    <tbody *ngFor="let sprint of sprints$ | async">
       <tr>
-        <th scope="row">{{i+1}}</th>
-        <td>{{req.code}}</td>
-        <td>{{req.title}}</td>
-        <td>{{req.area}}</td>
-        <td style="padding-left: 30px;">{{req.storypoints}}</td>
+        <th scope="row">{{sprint.number}}</th>
+        <td>{{sprint.name}}</td>
+        <td>{{sprint.startDate | date}}</td>
+        <td>{{sprint.dueDate | date}}</td>
+        <td>{{formatStatus(sprint.status)}}</td>
 
-        <td>
-          <div class="app-tooltip"> {{minimize(req.description)}}
-            <span class="app-tooltiptext tooltip-top">{{req.description}}</span>
-          </div>
+        <td >
+          <span (click)="onClickShowModalRequisite(sprint)" href="#myModalRequisite" data-toggle="modal" class="glyphicon  glyphicon-eye-open app-icon " style="margin-left: 23px;" ></span>
         </td>
 
         <td>
-          <span routerLink="/requisitos-edit/{{req.id}}" routerLinkActive="router-link-active" class="glyphicon glyphicon-edit app-icon "></span>
-          <a href="#myModal" data-toggle="modal"><span (click)="onClickDelete(req)" class=" glyphicon glyphicon-trash app-icon del-icon"></span></a>
+          <span routerLink="/sprints-edit/{{sprint.id}}" class="glyphicon glyphicon-edit app-icon "></span>
+          <a href="#myModalDelete" data-toggle="modal"><span (click)="onClickDelete(sprint)" class=" glyphicon glyphicon-trash app-icon del-icon"></span></a>
         </td>
 
       </tr>

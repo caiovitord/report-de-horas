@@ -1,9 +1,10 @@
 import { Observable, Subscription } from 'rxjs';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgSelectComponent } from '@ng-select/ng-select';
+import { map } from 'rxjs/operators';
 
 import { RequisitesService } from './../../../shared/services/requisites.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sp-form',
@@ -11,6 +12,9 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./sp-form.component.css']
 })
 export class SpFormComponent implements OnInit, OnDestroy {
+
+
+  @ViewChild('ngSelect') ngSelect: NgSelectComponent;
 
   requisites: Observable<any>;
 
@@ -37,15 +41,15 @@ export class SpFormComponent implements OnInit, OnDestroy {
 
     this.subscription = this.requisitesService.getAllRequisites()
       .pipe(
-        map(reqs => this.postProcessRequisites(reqs))
+        map(reqs => this.requisites = this.preProcessRequisites(reqs))
       ).subscribe();
 
   }
-  postProcessRequisites(reqs) {
-      reqs.forEach(reqElement => {
-        reqElement['title_and_code'] = reqElement['title'] + ' #Código: ' + reqElement['code'];
-      });
-      this.requisites = reqs;
+  preProcessRequisites(reqs) {
+    reqs.forEach(reqElement => {
+      reqElement['title_and_code'] = reqElement['title'] + ' #Código: ' + reqElement['code'];
+    });
+    return reqs;
   }
 
   verifyValidTouched(nomeCampo) {

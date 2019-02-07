@@ -78,7 +78,7 @@
     <div class="col-sm-12">
       <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('requisites') }">
         <label for="requisites" class="control-label">Requisitos da Sprint</label>
-        <ng-select [items]="requisites " bindLabel="title_and_code" multiple="true" bindValue="id" [virtualScroll]="true"
+        <ng-select #ngSelect [items]="requisites" bindLabel="title_and_code" multiple="true" bindValue="id" [virtualScroll]="true"
           formControlName="requisites">
         </ng-select>
         <small class="form-text text-muted" [style.display]=" verifyValidTouched('requisites') ? 'none' : 'block'">
@@ -93,6 +93,6 @@
 
   </div>
 
-  <!--app-form-debug [form]="formulario"></app-form-debug-->
+  <app-form-debug [form]="formulario"></app-form-debug>
 
 </form>

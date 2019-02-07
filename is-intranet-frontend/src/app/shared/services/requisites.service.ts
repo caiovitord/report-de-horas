@@ -83,5 +83,14 @@ export class RequisitesService {
     ).subscribe();
   }
 
+  getRequisiteListFromSprintId(sprintId) {
+    return this.http.get(EndPoints.SPRINT + '/' + sprintId + '/requisites')
+      .pipe(
+        map(dado => dado.json())
+      );
+
+  }
+
+
 
 }

@@ -10,6 +10,7 @@ import { SpFormComponent } from './sp-form/sp-form.component';
 import { SpListComponent } from './sp-list/sp-list.component';
 import { SharedModule } from './../../shared/shared.module';
 import { TestesModule } from './../../testes/testes.module';
+import { SpEditComponent } from './sp-edit/sp-edit.component';
 
 
 @NgModule({
@@ -21,6 +22,6 @@ import { TestesModule } from './../../testes/testes.module';
     TestesModule,
     NgSelectModule
   ],
-  declarations: [SpNewPageComponent, SpFormComponent, SpListComponent]
+  declarations: [SpNewPageComponent, SpFormComponent, SpListComponent, SpEditComponent]
 })
 export class SprintsModule { }
