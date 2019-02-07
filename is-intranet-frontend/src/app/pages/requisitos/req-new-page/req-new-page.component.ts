@@ -4,7 +4,6 @@ import { ServerResponseService } from './../../../shared/services/server-respons
 import { RequisitesService } from './../../../shared/services/requisites.service';
 import { PageHeaderService } from '../../../layout/container/page-header/page-header.service';
 import { Component, OnInit, ViewChild, OnDestroy, ElementRef } from '@angular/core';
-import { FormDebugComponent } from 'src/app/testes/form-debug/form-debug.component';
 import { ReqFormComponent } from '../req-form/req-form.component';
 import { map } from 'rxjs/operators';
 
@@ -25,6 +24,7 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
 
   showCsvTable = false;
   tableRequisites;
+  files: any;
 
   constructor(
     private pageHeaderService: PageHeaderService,
@@ -65,9 +65,19 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
 
   processResponse(res: any) {
     if (res.status && res.status === 200) {
-      this.formComponent.formulario.reset();
+      if (this.formComponent) {
+        this.formComponent.formulario.reset();
+      }
+      this.tableRequisites = null;
       this.serverReponseComponent.reset();
+      this.dismissTableWithDelay();
     }
+  }
+  async dismissTableWithDelay() {
+    await this.delay(3000);
+    this.showCsvTable = false;
+    this.files = false;
+    const element: HTMLElement = document.getElementById('fileInput') as HTMLElement;
   }
 
   ngOnDestroy(): void {
@@ -75,13 +85,14 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
   }
 
 
-  onUploadButtonClicked() {
-    
-    
+  onConfirmModal() {
+    const element: HTMLElement = document.getElementById('fileInput') as HTMLElement;
+    element.click();
   }
 
-
   fileUpload(files) {
+    this.files = files;
+    
     const file: File = files.item(0);
     const fileReader = new FileReader();
     fileReader.readAsText(file);
@@ -97,7 +108,7 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
 
 
   csvStringToJsonObject(csvString) {
-    const lines = csvString.split('\n');
+    const lines = csvString.split('\r\n');
     const result = [];
     const headers = lines[0].split(',');
 
@@ -114,4 +125,35 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
     return result;
   }
 
+
+  onTrySubmitCSVTable() {
+    this.serverResponseService.startResponse();
+    if (this.existNullValuesInCSV()) {
+      this.serverResponseService.setErrorResponseMessage('Existem valores nulos');
+    } else {
+      this.onSubmitCSVTable();
+    }
+  }
+
+  onSubmitCSVTable() {
+    this.requisiteService.addNewRequisite(this.tableRequisites);
+  }
+
+
+  existNullValuesInCSV(): boolean {
+    let thereIsNullValue = false;
+    this.tableRequisites.forEach(element => {
+      Object.values(element).forEach(cada => {
+        if (cada == null || cada === '') {
+          thereIsNullValue = true;
+        }
+      });
+    });
+    return thereIsNullValue;
+  }
+
+
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 }

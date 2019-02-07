@@ -17,9 +17,13 @@ export class ServerResponseService {
     this.responseEventEmitter.emit(response);
   }
 
+  setErrorResponseMessage(str: string) {
+    this.responseEventEmitter.emit({message: str});
+  }
 
   startResponse() {
     this.responseEventEmitter.emit('start');
   }
+
 
 }

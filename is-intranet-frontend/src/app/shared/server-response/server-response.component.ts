@@ -91,6 +91,14 @@ export class ServerResponseComponent implements OnInit, OnDestroy {
       return;
     }
 
+    if (response.message) {
+      this.message = response.message;
+      this.error = true;
+      this.showOkIcon = false;
+      return;
+
+    }
+
 
     if (response.status && response.status === 200) {
       this.showOkIcon = true;
@@ -114,7 +122,7 @@ export class ServerResponseComponent implements OnInit, OnDestroy {
   }
 
   async reset() {
-    await this.delay(2000);
+    await this.delay(4000);
     this.show = false;
     await this.delay(400);
     this.error = false;
