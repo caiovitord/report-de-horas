@@ -9,7 +9,7 @@ export class MenuLinksComponent implements OnInit {
 
   constructor() { }
 
-  isOpen: boolean[] = [false, true];
+  isOpen: boolean[] = [false, false, true];
 
   toggle(index) {
     this.isOpen[index] = !this.isOpen[index];

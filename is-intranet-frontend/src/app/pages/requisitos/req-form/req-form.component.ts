@@ -14,14 +14,15 @@ export class ReqFormComponent implements OnInit {
 
   areas: any;
 
+
+
   constructor(
     private formBuilder: FormBuilder,
     private devService: DevelopersService
-  ) { }
+    ) { }
 
   ngOnInit() {
     this.areas = this.devService.getArea();
-
 
     this.formulario = this.formBuilder.group({
       code: [null, [Validators.required, Validators.minLength(5)]],

@@ -9,6 +9,10 @@
     "id": {
       "type": "number"
     },
+    "name": {
+      "type": "string",
+      "required": true
+    },
     "startDate": {
       "type": "date",
       "required": true

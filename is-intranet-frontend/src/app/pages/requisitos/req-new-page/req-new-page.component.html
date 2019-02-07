@@ -1,24 +1,28 @@
-<div *ngIf="!showCsvTable" class="panel panel-default">
-  <div class="panel-heading">Formulário</div>
-  <div class="panel-body">
-    <app-req-form #formComponent></app-req-form>
-  </div>
-</div>
 <div *ngIf="!showCsvTable">
+  <div *ngIf="!showCsvTable" class="panel panel-default">
+    <div class="panel-heading">Formulário</div>
+    <div class="panel-body">
+      <app-req-form #formComponent></app-req-form>
+    </div>
+  </div>
+
   <app-server-response #serverReponseComponent sucessMessage="Requisito inserido!"></app-server-response>
   <br>
   <button type="submit" (click)="onTrySubmit()" class="btn btn-primary">Inserir novo</button>
   <br><br>
+
+
+
+  <button href="#myModal" data-toggle="modal" type="button" class="btn btn-primary">Inserir vários via CSV</button>
+  <br><br>
+  <input id="fileInput" type="file" accept=".csv" (input)="fileUpload($event.srcElement.files)" style="visibility: hidden;">
 </div>
-
-<button href="#myModal" data-toggle="modal" type="button" class="btn btn-primary">Inserir vários via CSV</button>
-
-<input *ngIf="!showCsvTable" id="fileInput" type="file" accept=".csv" (input)="fileUpload($event.srcElement.files)" style="visibility: hidden;">
 
 <app-modal-alert title="Atenção no modelo" smallInfo="Todas as informações devem ter valores NÃO NULOS." info="É crucial que o seu CSV tenha as seguintes colunas para inserir o requisito: title, code, description, area, storypoints. "
   confirmButtonText="Está no modelo" cancelButtonText="Não está no modelo" [component]="this"></app-modal-alert>
 
 <div *ngIf="showCsvTable">
+  <br>
   <div class="panel panel-default">
     <div class="panel-heading">Verifique as informações dos requisitos antes de confirmar</div>
     <div class="panel-body">

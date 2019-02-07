@@ -13,6 +13,6 @@ import { ModalAlertComponent } from './modal-alert/modal-alert.component';
     ServerResponseComponent,
     ModalAlertComponent
   ],
-  exports: [ErrorMsgComponent, ServerResponseComponent,ModalAlertComponent]
+  exports: [ErrorMsgComponent, ServerResponseComponent, ModalAlertComponent]
 })
 export class SharedModule { }

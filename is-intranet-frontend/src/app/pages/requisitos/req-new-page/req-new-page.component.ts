@@ -92,7 +92,7 @@ export class ReqNewPageComponent implements OnInit, OnDestroy {
 
   fileUpload(files) {
     this.files = files;
-    
+
     const file: File = files.item(0);
     const fileReader = new FileReader();
     fileReader.readAsText(file);

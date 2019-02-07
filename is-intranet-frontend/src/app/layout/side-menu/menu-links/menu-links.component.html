@@ -46,6 +46,21 @@
         </ul>
       </li>
 
+      <li class="treeview"[routerLinkActive]="['open', 'menu-open']">
+          <a href="#"  (click)="toggle(2)" >
+            <i class="fa fa-book"></i> <span>Sprints</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu"   [class.disp-block]="isOpen_f(2)" [class.disp-none]="!isOpen_f(2)">
+            <li><a [routerLink]="['/sprints-new']" ><i class="fa fa-circle-o"></i> Novo</a></li>
+          </ul>
+          <ul class="treeview-menu"   [class.disp-block]="isOpen_f(2)" [class.disp-none]="!isOpen_f(2)">
+            <li><a [routerLink]="['/sprints-list']" ><i class="fa fa-circle-o"></i> Lista</a></li>
+          </ul>
+        </li>  
+
       <!-- Para definição de labels do projeto
       <li class="header">LABELS</li>
       <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>

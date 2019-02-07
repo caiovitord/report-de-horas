@@ -1,0 +1,88 @@
+<form [formGroup]="formulario">
+
+  <!--INPUT---NAME -->
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('name') }">
+        <label for="name">Nome</label>
+        <input class="form-control" id="name" type="text" formControlName="name" placeholder="Nome simbólico.">
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('name') ? 'none' : 'block'">
+          Dê um nome simbólico a Sprint.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('name')" msgErro="O nome é obrigatório."></app-error-msg>
+      </div>
+    </div>
+
+    <!--INPUT---NUMBER-->
+    <div class="col-sm-6">
+      <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('number') }">
+        <label for="number">Número</label>
+        <input class="form-control" id="number" type="number" min="1" step="1" formControlName="number" placeholder="">
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('number') ? 'none' : 'block'">
+          Defina o número de sequência da Sprint.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('number')" msgErro="O número é inválido."></app-error-msg>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <!--INPUT---DESCRIPTION-->
+  <div class="form-group row">
+
+    <!--INPUT---START-DATE-->
+    <div class="col-sm-6">
+      <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('startDate') }">
+        <label for="startDate">Data de inicio</label>
+        <input class="form-control" id="startDate" type="date" formControlName="startDate" placeholder="Selecione">
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('startDate') ? 'none' : 'block'">
+          Quando essa Sprint irá começar.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('startDate')" msgErro="Definir uma data de inicio é obrigatório."></app-error-msg>
+      </div>
+    </div>
+
+
+
+    <!--INPUT---DUE-DATE-->
+    <div class="col-sm-6">
+      <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('dueDate') }">
+        <label for="dueDate">Data de entrega</label>
+        <input class="form-control" id="dueDate" type="date" formControlName="dueDate" placeholder="Selecione">
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('dueDate') ? 'none' : 'block'">
+          Quando essa Sprint irá finalizar.
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('dueDate')" msgErro="Definir uma data de entrega é obrigatório."></app-error-msg>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!--INPUT---REQUISITOS-->
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <div class="form-group" [ngClass]="{'has-error' :verifyValidTouched('requisites') }">
+        <label for="requisites" class="control-label">Requisitos da Sprint</label>
+        <ng-select [items]="requisites$ | async" bindLabel="title" multiple="true" bindValue="id" [virtualScroll]="true"
+          formControlName="requisites">
+        </ng-select>
+        <small class="form-text text-muted" [style.display]=" verifyValidTouched('requisites') ? 'none' : 'block'">
+          Selecione os requisitos que serão implementados nessa Sprint;
+        </small>
+        <app-error-msg [mostrarErro]="verifyValidTouched('requisites')" msgErro="Escolha ao menos um requisito."></app-error-msg>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <app-form-debug [form]="formulario"></app-form-debug>
+
+</form>
