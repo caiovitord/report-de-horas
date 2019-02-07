@@ -1,3 +1,4 @@
+import { SpListComponent } from './pages/sprints/sp-list/sp-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -16,7 +17,7 @@ const routes: Routes = [
 
     { path: 'requisitos-new', component: ReqNewPageComponent },
     { path: 'sprints-new', component: SpNewPageComponent },
-    { path: 'sprints-list', component: SpNewPageComponent },
+    { path: 'sprints-list', component: SpListComponent },
     { path: 'requisitos-edit/:id', component: ReqEditComponent },
     { path: 'requisitos-list', component: ReqListComponent },
     { path: 'report-horas', component: RhNewPageComponent },

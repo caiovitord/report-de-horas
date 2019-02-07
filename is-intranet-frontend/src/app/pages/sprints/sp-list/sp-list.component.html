@@ -1,3 +1,46 @@
-<p>
-  sp-list works!
-</p>
+
+<app-server-response #serverReponseComponent sucessMessage="Requisito deletado!"></app-server-response>
+
+<div class="panel panel-default" [class.padding]="showLoading">
+
+  <app-modal-alert title="Confirme" smallInfo="Essa ação não pode ser revertida!" [info]="infoModalMessage" confirmButtonText="Deletar"
+    cancelButtonText="Cancelar" [component]="this" ></app-modal-alert>
+
+
+  <table class="table">
+    <!--TABLE HEADER-->
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Código</th>
+        <th>Título</th>
+        <th>Área</th>
+        <th>StoryPoints</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor="let req of requisites$ | async; index as i">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{req.code}}</td>
+        <td>{{req.title}}</td>
+        <td>{{req.area}}</td>
+        <td style="padding-left: 30px;">{{req.storypoints}}</td>
+
+        <td>
+          <div class="app-tooltip"> {{minimize(req.description)}}
+            <span class="app-tooltiptext tooltip-top">{{req.description}}</span>
+          </div>
+        </td>
+
+        <td>
+          <span routerLink="/requisitos-edit/{{req.id}}" routerLinkActive="router-link-active" class="glyphicon glyphicon-edit app-icon "></span>
+          <a href="#myModal" data-toggle="modal"><span (click)="onClickDelete(req)" class=" glyphicon glyphicon-trash app-icon del-icon"></span></a>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
