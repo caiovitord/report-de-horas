@@ -27,7 +27,8 @@
     },
     "status": {
       "type": "string",
-      "required": true
+      "required": false,
+      "default": ""
     }
   },
   "validations": [],
