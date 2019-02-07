@@ -1,7 +1,7 @@
 import { ServerResponseService } from './../../../shared/services/server-response.service';
 import { Router } from '@angular/router';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 
 import { PageHeaderService } from './../../../layout/container/page-header/page-header.service';
 import { RequisitesService } from './../../../shared/services/requisites.service';
@@ -9,22 +9,51 @@ import { StringCommons } from './../../../shared/StringCommons';
 import { ServerResponseComponent } from './../../../shared/server-response/server-response.component';
 import { map } from 'rxjs/operators';
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
 @Component({
   selector: 'app-req-list',
   templateUrl: './req-list.component.html',
-  styleUrls: ['./req-list.component.css']
+  styleUrls: ['./req-list.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      // ...
+      state('fadeIn', style({
+        opacity: 1,
+      })),
+      state('fadeOut', style({
+        opacity: 0,
+        display: 'none'
+      })),
+      transition('fadeIn => fadeOut', [
+        animate('0.4s')
+      ]),
+      transition('fadeOut => fadeIn', [
+        animate('0.4s')
+      ]),
+    ])
+  ]
 })
 export class ReqListComponent implements OnInit {
 
 
 
   @ViewChild('serverReponseComponent') serverReponseComponent: ServerResponseComponent;
+  @ViewChild('searchBar') searchBar: ElementRef;
 
 
   infoModalMessage: string;
   requisites$: Observable<any>;
   requisiteBeingDeleted;
-  subscription: any;
+  subscription: Subscription;
+
+  searchStr = '';
 
 
   constructor(
@@ -42,10 +71,19 @@ export class ReqListComponent implements OnInit {
     this.refreshRequisites();
 
     this.subscription = this.serverResponseService.responseEventEmitter
-    .pipe(
-      map(res => this.processResponse(res))
-    )
-    .subscribe();
+      .pipe(
+        map(res => this.processResponse(res))
+      )
+      .subscribe();
+  }
+
+  onInputSearch() {
+    this.searchStr = this.searchBar.nativeElement.value;
+  }
+  canShowSearch(req) {
+    return req.code.toLowerCase().includes(this.searchStr)
+      || req.title.toLowerCase().includes(this.searchStr)
+      || req.description.toLowerCase().includes(this.searchStr);
   }
 
   refreshRequisites() {
@@ -57,7 +95,7 @@ export class ReqListComponent implements OnInit {
   }
 
   onClickDelete(requisite) {
-    this.infoModalMessage = 'Tem certeza que deseja deletar o requisito de código ' + requisite.code ;
+    this.infoModalMessage = 'Tem certeza que deseja deletar o requisito de código ' + requisite.code;
     this.requisiteBeingDeleted = requisite;
   }
 

@@ -43,7 +43,7 @@ export class SpEditComponent implements OnInit, OnDestroy {
     this.pageHeaderService.upperLevel = 'Sprints';
     this.pageHeaderService.description = '';
 
-    // Favor não assustar com o código demoníaco abaixo.
+    // Favor não assustar com o código demoníaco abaixo. Ele preenche os dados do formulário
     this.subscription.push( // Serve para se desinscrever depois, no método onDestroy
       this.route.params.subscribe( // Primeiro pega a rota, e pega o ID
         (params: any) => {
@@ -119,6 +119,6 @@ export class SpEditComponent implements OnInit, OnDestroy {
 
   onEdit(values: any) {
     values['id'] = this.id;
-    
+    this.sprintsService.editSprintWithRequisites(values);
   }
 }

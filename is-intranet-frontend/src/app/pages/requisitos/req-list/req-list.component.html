@@ -1,10 +1,17 @@
-
 <app-server-response #serverReponseComponent sucessMessage="Requisito deletado!"></app-server-response>
+
+<div class="container">
+  <div style="width: 300px; margin:auto; display:block; text-align: center;"><h3> Pesquisa</h3>
+    <input class="form-control" (input)="onInputSearch()" #searchBar type="text">
+  </div>
+</div>
+<br><br>
+
 
 <div class="panel panel-default" [class.padding]="showLoading">
 
-  <app-modal-alert modalId="myModal" title="Confirme" smallInfo="Essa ação não pode ser revertida!" [info]="infoModalMessage" confirmButtonText="Deletar"
-    cancelButtonText="Cancelar" [component]="this" ></app-modal-alert>
+  <app-modal-alert modalId="myModal" title="Confirme" smallInfo="Essa ação não pode ser revertida!" [info]="infoModalMessage"
+    confirmButtonText="Deletar" cancelButtonText="Cancelar" [component]="this"></app-modal-alert>
 
 
   <table class="table">
@@ -22,7 +29,7 @@
     </thead>
 
     <tbody *ngFor="let req of requisites$ | async; index as i">
-      <tr>
+      <tr [@fadeInOut]="canShowSearch(req) ? 'fadeIn' : 'fadeOut'">
         <th scope="row">{{i+1}}</th>
         <td>{{req.code}}</td>
         <td>{{req.title}}</td>
@@ -36,7 +43,7 @@
         </td>
 
         <td>
-          <span routerLink="/requisitos-edit/{{req.id}}"  class="glyphicon glyphicon-edit app-icon "></span>
+          <span routerLink="/requisitos-edit/{{req.id}}" class="glyphicon glyphicon-edit app-icon "></span>
           <a href="#myModal" data-toggle="modal"><span (click)="onClickDelete(req)" class=" glyphicon glyphicon-trash app-icon del-icon"></span></a>
         </td>
 

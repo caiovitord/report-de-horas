@@ -1,3 +1,10 @@
+<div class="container">
+    <div style="width: 300px; margin:auto; display:block; text-align: center;"><h3> Pesquisa</h3>
+      <input class="form-control" (input)="onInputSearch()" #searchBar type="text">
+    </div>
+  </div>
+<br><br>
+
 <app-server-response #serverReponseComponent sucessMessage="Sprint deletada!"></app-server-response>
 <br><br>
 <div class="panel panel-default" [class.padding]="showLoading">
@@ -27,7 +34,7 @@
     </thead>
 
     <tbody *ngFor="let sprint of sprints$ | async">
-      <tr>
+      <tr [@fadeInOut]="canShowSearch(sprint) ? 'fadeIn' : 'fadeOut'">
         <th scope="row">{{sprint.number}}</th>
         <td>{{sprint.name}}</td>
         <td>{{sprint.startDate | date}}</td>

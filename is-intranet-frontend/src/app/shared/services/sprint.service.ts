@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SprintService {
- 
+
 
 
   constructor(private http: Http,
@@ -32,7 +32,7 @@ export class SprintService {
   }
 
 
-  responseProcessing(response) {
+  endOfRequisitonResponseProcessing(response) {
     this.serverResponseService.setResponse(response);
   }
 
@@ -43,19 +43,24 @@ export class SprintService {
       delay(200),
       timeout(2000),
       catchError(e => {
-        this.responseProcessing(e);
+        this.endOfRequisitonResponseProcessing(e);
         return null;
       }),
-      map(response => this.responseProcessing(response))
+      map(response => this.endOfRequisitonResponseProcessing(response))
     ).subscribe();
   }
 
-  batchResponseProcessing(response, requisiteIds) {
-    if (response.status === 200) {
+  batchAddSprintRequisiteRelation(response, requisiteIds, editingSprintId?) {
+    console.log(response);
+    if (response.status === 200) { // Ocorre quando está criando uma nova sprint com requisitos
       const idNewSprint = JSON.parse(response._body).id;
       this.addNewSprintRequisiteRelation(idNewSprint, requisiteIds);
     } else {
-      this.serverResponseService.setResponse(response);
+      if (response.status === 204) {
+        this.addNewSprintRequisiteRelation(editingSprintId, requisiteIds);
+      } else {
+        this.endOfRequisitonResponseProcessing(response);
+      }
     }
   }
 
@@ -63,33 +68,31 @@ export class SprintService {
     this.serverResponseService.startResponse();
 
     const requisiteIds = values.requisites;
-    //console.log(requisiteIds);
-
     this.http.post(EndPoints.SPRINT, values)
       .pipe(
         delay(200),
         timeout(2000),
         catchError(e => {
-          this.responseProcessing(e);
+          this.endOfRequisitonResponseProcessing(e);
           return null;
         }),
-        map(response => this.batchResponseProcessing(response, requisiteIds))
+        map(response => this.batchAddSprintRequisiteRelation(response, requisiteIds))
       ).subscribe();
   }
 
-  addNewSprintRequisiteRelation(idNewSprint, requisiteIds) {
+  addNewSprintRequisiteRelation(idSprint, requisiteIds) {
     requisiteIds.forEach(idRequisito => {
 
-      const relationObject = { sprintId: idNewSprint, requisiteId: idRequisito };
+      const relationObject = { sprintId: idSprint, requisiteId: idRequisito };
       // console.log(relationObject);
 
-      this.http.put(EndPoints.SPRINT + '/' + idNewSprint + '/requisites/rel/' + idRequisito
+      this.http.put(EndPoints.SPRINT + '/' + idSprint + '/requisites/rel/' + idRequisito
         , relationObject)
         .pipe(
           delay(100),
           timeout(2000),
           catchError(e => {
-            this.responseProcessing(e);
+            this.endOfRequisitonResponseProcessing(e);
             return null;
           }),
           map(response => {
@@ -99,6 +102,43 @@ export class SprintService {
     });
 
   }
+
+  editSprintWithRequisites(values) {
+    this.serverResponseService.startResponse();
+    const requisiteIds = values.requisites;
+
+    this.http.put(EndPoints.SPRINT, values)
+      .pipe(
+        delay(200),
+        timeout(2000),
+        catchError(e => {
+          this.endOfRequisitonResponseProcessing(e);
+          return null;
+        }),
+        map(response => {
+          this.deleteOldSprintRequisites(response, values.id, requisiteIds);
+        })
+      ).subscribe();
+  }
+
+  deleteOldSprintRequisites(response, sprintId, requisiteIds) {
+    if (response.status !== 200) {
+      this.endOfRequisitonResponseProcessing(response);
+      return;
+    }
+
+    this.http.delete(EndPoints.SPRINT + '/' + sprintId + '/requisites')
+      .pipe(
+        timeout(2000),
+        catchError(e => {
+          this.endOfRequisitonResponseProcessing(e);
+          return null;
+        }),
+        map(n_response => this.batchAddSprintRequisiteRelation(n_response, requisiteIds, sprintId)
+        )
+      ).subscribe();
+  }
+
 
 
   // Essa função garante que a resposta só será positiva se todas forem positivas. Não é feito nada se der erro em uma relação de requisito

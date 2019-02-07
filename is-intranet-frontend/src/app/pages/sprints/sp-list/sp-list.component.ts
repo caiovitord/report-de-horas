@@ -1,6 +1,6 @@
 import { ModalAlertComponent } from './../../../shared/modal-alert/modal-alert.component';
 
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 
@@ -13,10 +13,37 @@ import { StringCommons } from './../../../shared/StringCommons';
 import { ServerResponseComponent } from './../../../shared/server-response/server-response.component';
 import { map } from 'rxjs/operators';
 
+
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
 @Component({
   selector: 'app-sp-list',
   templateUrl: './sp-list.component.html',
-  styleUrls: ['./sp-list.component.css']
+  styleUrls: ['./sp-list.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      // ...
+      state('fadeIn', style({
+        opacity: 1,
+      })),
+      state('fadeOut', style({
+        opacity: 0,
+        display: 'none'
+      })),
+      transition('fadeIn => fadeOut', [
+        animate('0.4s')
+      ]),
+      transition('fadeOut => fadeIn', [
+        animate('0.4s')
+      ]),
+    ])
+  ]
 })
 export class SpListComponent implements OnInit, OnDestroy {
 
@@ -30,6 +57,8 @@ export class SpListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
 
+  searchStr = '';
+  @ViewChild('searchBar') searchBar: ElementRef;
   @ViewChild('serverReponseComponent') serverReponseComponent: ServerResponseComponent;
   @ViewChild('modalAlertReqComponent') modalAlertReqComponent: ModalAlertComponent;
 
@@ -58,6 +87,15 @@ export class SpListComponent implements OnInit, OnDestroy {
     .subscribe();
   }
 
+
+  onInputSearch() {
+    this.searchStr = this.searchBar.nativeElement.value;
+  }
+  canShowSearch(sprint) {
+    return sprint.name.toLowerCase().includes(this.searchStr)
+      || String(sprint.number).toLowerCase().includes(this.searchStr)
+      ||  sprint.status.toLowerCase().includes(this.searchStr);
+  }
 
 
 

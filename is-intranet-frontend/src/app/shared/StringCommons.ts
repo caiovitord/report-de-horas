@@ -11,7 +11,7 @@ export class StringCommons {
 
     static getDateStringFromDate(date: Date) {
         console.log(date);
-        return date.getFullYear() + '-' + StringCommons.pad(date.getMonth(), 2) + '-' + StringCommons.pad(date.getDay(), 2);
+        return date.getFullYear() + '-' + StringCommons.pad(date.getMonth() + 1, 2) + '-' + StringCommons.pad(date.getDay() + 1, 2);
     }
 
     static pad(str, size) {

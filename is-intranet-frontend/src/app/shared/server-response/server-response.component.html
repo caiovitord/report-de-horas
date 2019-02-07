@@ -1,6 +1,6 @@
 <div #messageDiv class="alert alert-primary" [class.success]="showOkIcon && !error" [class.error]="error" role="alert" [class.go-away]="goAway" [@fadeInOut]="show ? 'fadeIn' : 'fadeOut'">
     <div style="float:right;margin-top: 4px; margin-left:40px;" [class.marginl]="error || showOkIcon" >{{message}}</div>
-    <div  [@fadeInOutIcon]="showOkIcon || error ? 'fadeOut' : 'fadeIn'" class="loader" [style.position]="showOkIcon || error ? 'absolute' : 'inherit'"></div>
+    <div  [@fadeInOutIcon]="showOkIcon || error ? 'fadeOut' : 'fadeIn'" class="loader" style="position:absolute;"></div>
     <span  [@fadeInOutIcon]="showOkIcon && !error ? 'fadeIn' : 'fadeOut'" class="fa fa-check" style="font-size: x-large;" [style.position]="showOkIcon && !error ? 'inherit' : 'absolute'"></span>
     <span  [@fadeInOutIcon]="error ? 'fadeIn' : 'fadeOut'" class="fa fa-times" style="font-size: x-large;"></span>
 </div>
