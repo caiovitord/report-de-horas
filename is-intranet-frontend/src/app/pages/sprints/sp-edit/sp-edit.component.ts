@@ -71,7 +71,7 @@ export class SpEditComponent implements OnInit, OnDestroy {
                     this
                       .formComponent
                       .formulario
-                      .patchValue(this.preProcessSprintData(dado)); // Preenche com o resto dos dados
+                      .patchValue(dado); // Preenche com o resto dos dados
 
                   })
               ).subscribe());
@@ -87,11 +87,6 @@ export class SpEditComponent implements OnInit, OnDestroy {
         .subscribe());
   }
 
-  preProcessSprintData(dado): any {
-    dado['dueDate'] = StringCommons.getDateStringFromDate(new Date(dado['dueDate']));
-    dado['startDate'] = StringCommons.getDateStringFromDate(new Date(dado['startDate']));
-    return dado;
-  }
 
   ngOnDestroy() {
     this.subscription.forEach(s => s.unsubscribe());

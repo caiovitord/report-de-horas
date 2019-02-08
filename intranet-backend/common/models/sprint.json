@@ -14,11 +14,11 @@
       "required": true
     },
     "startDate": {
-      "type": "date",
+      "type": "string",
       "required": true
     },
     "dueDate": {
-      "type": "date",
+      "type": "string",
       "required": true
     },
     "number": {

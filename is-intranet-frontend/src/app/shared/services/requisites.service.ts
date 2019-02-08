@@ -33,7 +33,7 @@ export class RequisitesService {
     this.http.post(EndPoints.REQUISITES, values)
       .pipe(
         delay(200),
-        timeout(2000),
+        timeout(6000),
         catchError(e => {
           this.responseProcessing(e);
           return null;
@@ -55,7 +55,7 @@ export class RequisitesService {
     this.http.put(EndPoints.REQUISITES, values)
       .pipe(
         delay(200),
-        timeout(2000),
+        timeout(6000),
         catchError(e => {
           this.responseProcessing(e);
           return null;
@@ -74,7 +74,7 @@ export class RequisitesService {
 
     this.http.delete(EndPoints.REQUISITES + '/' + requisiteBeingDeleted.id).pipe(
       delay(200),
-      timeout(2000),
+      timeout(6000),
       catchError(e => {
         this.responseProcessing(e);
         return null;

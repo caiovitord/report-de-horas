@@ -83,6 +83,8 @@ export class ReqListComponent implements OnInit {
   canShowSearch(req) {
     return req.code.toLowerCase().includes(this.searchStr)
       || req.title.toLowerCase().includes(this.searchStr)
+      || req.area.toLowerCase().includes(this.searchStr)
+      || String(req.storypoints).toLowerCase().includes(this.searchStr)
       || req.description.toLowerCase().includes(this.searchStr);
   }
 
