@@ -22,7 +22,7 @@
       "model": "HourReport",
       "foreignKey": "",
       "options": {
-        "nestRemoting": true
+        "nestRemoting": false
       }
     }
   },
